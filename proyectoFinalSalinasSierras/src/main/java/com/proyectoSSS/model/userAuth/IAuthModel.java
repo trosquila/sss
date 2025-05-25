@@ -6,4 +6,6 @@ public interface IAuthModel {
 
 	boolean InsertNewUser(UserAuth userAuth);
 
+	String getPasswordForLogin(String string);
+
 }

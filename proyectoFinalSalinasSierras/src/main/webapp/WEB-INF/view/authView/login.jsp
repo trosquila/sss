@@ -5,11 +5,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Gestor de vehiculos</title>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
 	<body>
 		<header>
 		</header>
-		<section>
+		<section class="contenedorPincipal">
 			<h1>Inicio de sesión</h1>
 			<form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
 				<div>

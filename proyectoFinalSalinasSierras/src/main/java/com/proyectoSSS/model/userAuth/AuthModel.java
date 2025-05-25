@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import com.proyectoSSS.model.dataBase.DatabaseConnection;
 
+
 public class AuthModel implements IAuthModel {
 
 	private Connection connection;
@@ -44,7 +45,7 @@ public class AuthModel implements IAuthModel {
 	@Override
 	public boolean InsertNewUser(UserAuth userAuth) {
 		String query = "INSERT INTO users (UserName, password) VALUES (?, ?)";
-
+		
 		try {
 			PreparedStatement ps1 = connection.prepareStatement(query);
 
@@ -58,6 +59,30 @@ public class AuthModel implements IAuthModel {
 			return false;
 		}
 		return true;
+	}
+	
+	@Override
+	public String getPasswordForLogin(String userName) {
+		String query = "SELECT password FROM users WHERE UserName like ?";
+		System.out.println("model para sacar contraseña");
+		try {
+			PreparedStatement ps2 = connection.prepareStatement(query);
+
+			ps2.setString(1, userName);
+
+			ResultSet rs = ps2.executeQuery();
+
+			if (rs.next()) {
+				String password = rs.getString(1);
+				System.out.println(password);
+				return password;
+			}else {
+				return null;
+			}
+			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }
