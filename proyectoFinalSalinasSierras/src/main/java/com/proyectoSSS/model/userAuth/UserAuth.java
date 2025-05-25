@@ -5,7 +5,7 @@ public class UserAuth {
 	private String password;
 	
 	public UserAuth(String userName, String password) {
-		//super();
+		super();
 		this.userName = userName;
 		this.password = password;
 	}

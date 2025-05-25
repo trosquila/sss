@@ -8,7 +8,7 @@
 </head>
 <body>
 	<section>
-		<h1>Inicio de sesión</h1>
+		<h1>Cree una cuenta</h1>
 		<form action="${pageContext.request.contextPath}/RegisterServlet"
 			method="POST">
 			<div>
@@ -18,9 +18,7 @@
 				<label>Contraseña</label> <input type="password" name="password">
 			</div>
 			<button type="submit">Iniciar sesión</button>
-			<p>
-				¿Ya tienes cuenta? <a href="${pageContext.request.contextPath}/LoginServlet">Inicia sesión aquí</a>
-			</p>
+			<p>¿Ya tienes cuenta? <a href="${pageContext.request.contextPath}/LoginServlet">Iniciasesión aquí</a></p>
 		</form>
 	</section>
 </body>

@@ -8,40 +8,56 @@ import java.sql.SQLException;
 
 import com.proyectoSSS.model.dataBase.DatabaseConnection;
 
-
-
-public class AuthModel implements IAuthModel{
+public class AuthModel implements IAuthModel {
 
 	private Connection connection;
-	
+
 	public AuthModel() throws ClassNotFoundException, SQLException, IOException {
-		
+
 		this.connection = DatabaseConnection.getConnection();
 	}
 
 	@Override
 	public boolean checkUser(String username) {
-		
-String query = "SELECT UserName, password FROM users WHERE UserName like ?";
-		
+		String query = "SELECT UserName, password FROM users WHERE UserName like ?";
+
 		try {
 			PreparedStatement ps2 = connection.prepareStatement(query);
 
 			ps2.setString(1, username);
-			
+
 			ResultSet rs = ps2.executeQuery();
-			
+
 			if (rs.next()) {
-	            System.out.println("Si encontrado");
+				System.out.println("Si encontrado");
 
 				return true;
 			} else {
-	            return false;
-	        }
+				return false;
+			}
 		} catch (Exception e) {
-            return false;
+			return false;
 		}
-		
+
 	}
-	
+
+	@Override
+	public boolean InsertNewUser(UserAuth userAuth) {
+		String query = "INSERT INTO users (UserName, password) VALUES (?, ?)";
+
+		try {
+			PreparedStatement ps1 = connection.prepareStatement(query);
+
+			ps1.setString(1, userAuth.getUserName());
+			ps1.setString(2, userAuth.getPassword());
+
+			ps1.executeUpdate();
+
+			
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
 }

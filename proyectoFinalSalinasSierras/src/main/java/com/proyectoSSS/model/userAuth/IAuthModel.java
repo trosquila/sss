@@ -4,4 +4,6 @@ public interface IAuthModel {
 
 	boolean checkUser(String username);
 
+	boolean InsertNewUser(UserAuth userAuth);
+
 }
