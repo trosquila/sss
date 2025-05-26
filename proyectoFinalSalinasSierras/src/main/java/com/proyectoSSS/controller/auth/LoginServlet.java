@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -59,15 +61,27 @@ public class LoginServlet extends HttpServlet {
 
 			// si no hay ningun usuario con ese nombre lo guardamos sino lanzamos un error
 			if (checkUser == true) {
-				//datos metidos por el user
-				UserAuth userAuth = new UserAuth(username, password);
-				//buscamos los datos en la bbdd para comparar contraseñas
-				String buscarContra = authModel.getPasswordForLogin(userAuth.getUserName());
+				UserAuth userAuth = new UserAuth(0,username, password);
+				String searchPassword = authModel.getPasswordForLogin(userAuth.getUserName());
 				
-				boolean result = this.passwordEncryptor.checkPassword(userAuth.getPassword(), buscarContra);
+				boolean result = this.passwordEncryptor.checkPassword(userAuth.getPassword(), searchPassword);
 				System.out.println(result);
+				//si lo encuentra saca el user entero
 				if(result == true) {
-					request.getRequestDispatcher("/WEB-INF/view/home/home.jsp").forward(request, response);
+					UserAuth loadUser = authModel.loadUser(username);
+					//si no hay ningun problema inica sesión
+					if(loadUser != null) {
+						HttpSession session = request.getSession(); 
+					    session.setAttribute("UUID", loadUser.getUuid()); 
+					    session.setAttribute("UserName", loadUser.getUserName()); 
+					    session.setMaxInactiveInterval(1800); 
+						request.getRequestDispatcher("/WEB-INF/view/home/home.jsp").forward(request, response);
+					}else {
+						request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
+						dispatcher.forward(request, response);
+					}
+					
 				}else {
 					request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");

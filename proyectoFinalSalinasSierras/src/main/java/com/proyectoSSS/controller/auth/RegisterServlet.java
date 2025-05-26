@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
 
 			// si no hay ningun usuario con ese nombre lo guardamos sino lanzamos un error
 			if (checkUser == false) {
-				UserAuth userAuth = new UserAuth(username, password);
+				UserAuth userAuth = new UserAuth(0,username, password);
 				String encrypted = this.passwordEncryptor.encryptPassword(userAuth.getPassword());
 				userAuth.setPassword(encrypted);
 

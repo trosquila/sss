@@ -85,4 +85,30 @@ public class AuthModel implements IAuthModel {
 		}
 	}
 
+	@Override
+	public UserAuth loadUser(String username) {
+		String query = "SELECT UserName, password FROM users WHERE UserName like ?";
+
+		try {
+			PreparedStatement ps2 = connection.prepareStatement(query);
+
+			ps2.setString(1, username);
+
+			ResultSet rs = ps2.executeQuery();
+
+			if (rs.next()) {
+				int uuid = rs.getInt(1);
+				String user = rs.getString(1);
+				String password = rs.getString(3);
+				UserAuth loadUser = new UserAuth(uuid, user, password);
+
+				return loadUser;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

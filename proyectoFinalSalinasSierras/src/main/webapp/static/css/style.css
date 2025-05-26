@@ -1,5 +1,79 @@
 @charset "UTF-8";
 
-.contenedorPincipal{
+body{
+	margin: 0;
+	font-family: Arial;
+}
+header{
+	height: 20vh;
+	position: sticky;
+      top: 0;
+      background-color: white; /* o el color que necesites */
+      z-index: 1000; /* asegura que esté por encima de otros elementos */
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
 	
+}
+footer{
+    width: 100%;
+    background-color: #8aef96 ;
+    height: 50px;
+    color: white;
+    font-family: montserrat, arial;
+    position: fixed;
+    bottom:0;
+    z-index: 100001;
+    text-align: end;
+}
+h1{
+	color: grey ;
+}
+/*Estilos del login*/
+.contenedorPincipal{
+	display: grid;
+	margin: 50px auto;
+	justify-content: center;
+	text-align: center;
+}
+.formStyle{
+	display: flex;
+	flex-direction: column;
+
+	height: 25vh;
+	gap:10px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	padding: 20px;
+}
+.formStyle input{
+	border-radius: 5px;
+	height: 2vh;
+	width: 50%;
+	
+}
+.contenidoForm{
+	display: flex;
+	gap: 2px;
+	justify-content: flex-end;
+	gap: 2px
+}
+.contenedorBtnForm {
+  display: flex;
+  justify-content: center;
+}
+
+.formButton{
+	margin-top:30px;
+	width: 10vh;
+	height: 4vh;
+	border: 0px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.formButton:hover {
+  	background-color: red;
+}
+
+.formButton:active {
+  	background-color: blue;
 }

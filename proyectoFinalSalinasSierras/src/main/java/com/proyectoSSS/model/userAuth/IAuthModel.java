@@ -8,4 +8,6 @@ public interface IAuthModel {
 
 	String getPasswordForLogin(String string);
 
+	UserAuth loadUser(String username);
+
 }
