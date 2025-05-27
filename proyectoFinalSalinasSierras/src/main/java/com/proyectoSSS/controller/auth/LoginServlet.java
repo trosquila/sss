@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 				String searchPassword = authModel.getPasswordForLogin(userAuth.getUserName());
 				
 				boolean result = this.passwordEncryptor.checkPassword(userAuth.getPassword(), searchPassword);
-				System.out.println(result);
+				
 				//si lo encuentra saca el user entero
 				if(result == true) {
 					UserAuth loadUser = authModel.loadUser(username);
@@ -80,23 +80,27 @@ public class LoginServlet extends HttpServlet {
 						request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 						dispatcher.forward(request, response);
+						System.out.println("1");
 					}
 					
 				}else {
 					request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 					dispatcher.forward(request, response);
+					System.out.println("2");
 				}
 			} else {
 				request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 				dispatcher.forward(request, response);
+				System.out.println("3");
 			}
 
 		} catch (Exception e) {
 			request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 			dispatcher.forward(request, response);
+			System.out.println("4 "+ e);
 		}
 
 	}

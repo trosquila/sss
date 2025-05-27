@@ -87,7 +87,7 @@ public class AuthModel implements IAuthModel {
 
 	@Override
 	public UserAuth loadUser(String username) {
-		String query = "SELECT UserName, password FROM users WHERE UserName like ?";
+		String query = "SELECT UUID, UserName, password FROM users WHERE UserName like ?";
 
 		try {
 			PreparedStatement ps2 = connection.prepareStatement(query);
