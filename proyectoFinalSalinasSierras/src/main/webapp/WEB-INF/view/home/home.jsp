@@ -17,7 +17,7 @@
 					<a href="${pageContext.request.contextPath}/AddCarController">Añadir Vehiculo</a>
 				</div>
 				<div>
-					<a href="${pageContext.request.contextPath}/MangeCar">Administrar mis vehiculos</a>
+					<a href="${pageContext.request.contextPath}/ManageCar">Administrar mis vehiculos</a>
 				</div>
 				<div>
 					<a href="${pageContext.request.contextPath}/gastos">Resumen de mis gastos</a>
