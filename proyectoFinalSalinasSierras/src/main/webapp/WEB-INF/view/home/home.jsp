@@ -20,6 +20,9 @@
 					<a href="${pageContext.request.contextPath}/MangeCar">Administrar mis vehiculos</a>
 				</div>
 				<div>
+					<a href="${pageContext.request.contextPath}/gastos">Resumen de mis gastos</a>
+				</div>
+				<div>
 					<a href="${pageContext.request.contextPath}/SesionClose">Cerrar sesión</a>
 				</div>
 			</div>

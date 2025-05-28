@@ -61,11 +61,27 @@ public class AddCarControllerServlet extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			//para que sea un numero ya que el id esint
 			int uuid = (int) session.getAttribute("UUID");
-
-
 			boolean assignOwner = carModel.assignOwner(car.getLicensePlate(), uuid);
+			try {
+				if(assignOwner == true) {
+					request.setAttribute("saveCarOk", "El vehiculo fue registrado.");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+					dispatcher.forward(request, response);
+				}else {
+					request.setAttribute("saveCarFalse", "Hubo un error al asignar el dueño, vuelva a intentarlo más tarde.");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+					dispatcher.forward(request, response);
+				}
+			} catch (Exception e) {
+				request.setAttribute("saveCarFalse", "Hubo un error al asignar el dueño, vuelva a intentarlo más tarde.");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+				dispatcher.forward(request, response);
+			}
+			
 		}else {
-			System.out.println("se nos complica pa");
+			request.setAttribute("saveCarFalse", "Hubo un error al guardar el vehiculo.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 	}

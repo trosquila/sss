@@ -26,7 +26,6 @@
 				<p>¿No tienes cuenta? <a href="${pageContext.request.contextPath}/RegisterServlet">Regístrate aquí</a></p>
 			</form>
 		</section>
-		<%-- Mostrar error si existe --%>
 		<%
 		if (request.getAttribute("errorLogin") != null) {
 		%>

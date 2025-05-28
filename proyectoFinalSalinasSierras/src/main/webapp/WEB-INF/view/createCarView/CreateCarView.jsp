@@ -35,6 +35,18 @@
 					<a href="${pageContext.request.contextPath}/home.jsp">Volver</a>
 				</form>
 			</div>
+			<%
+			if (request.getAttribute("saveCarOk") != null) {
+			%>
+				<p style="color: green;"><%=request.getAttribute("saveCarOk")%></p>
+			<%
+			}else if(request.getAttribute("saveCarFalse") != null){
+			%>
+				<p style="color: red;"><%=request.getAttribute("saveCarFalse")%></p>
+			<%
+			}
+			
+			%>
 		</section>
 	</body>
 </html>
