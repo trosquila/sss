@@ -30,7 +30,6 @@ public class AuthModel implements IAuthModel {
 			ResultSet rs = ps2.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("Si encontrado");
 
 				return true;
 			} else {
@@ -64,7 +63,6 @@ public class AuthModel implements IAuthModel {
 	@Override
 	public String getPasswordForLogin(String userName) {
 		String query = "SELECT password FROM users WHERE UserName like ?";
-		System.out.println("model para sacar contraseña");
 		try {
 			PreparedStatement ps2 = connection.prepareStatement(query);
 
@@ -74,7 +72,6 @@ public class AuthModel implements IAuthModel {
 
 			if (rs.next()) {
 				String password = rs.getString(1);
-				System.out.println(password);
 				return password;
 			}else {
 				return null;

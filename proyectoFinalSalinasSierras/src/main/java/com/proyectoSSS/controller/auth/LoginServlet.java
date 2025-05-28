@@ -71,36 +71,37 @@ public class LoginServlet extends HttpServlet {
 					UserAuth loadUser = authModel.loadUser(username);
 					//si no hay ningun problema inica sesión
 					if(loadUser != null) {
-						HttpSession session = request.getSession(); 
+						HttpSession session = request.getSession(true); 
+						if (session == null) {
+						    System.out.println("No hay una sesión activa en login.");
+						}
 					    session.setAttribute("UUID", loadUser.getUuid()); 
 					    session.setAttribute("UserName", loadUser.getUserName()); 
 					    session.setMaxInactiveInterval(1800); 
+					    
 						request.getRequestDispatcher("/WEB-INF/view/home/home.jsp").forward(request, response);
+						
 					}else {
 						request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 						dispatcher.forward(request, response);
-						System.out.println("1");
 					}
 					
 				}else {
 					request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 					dispatcher.forward(request, response);
-					System.out.println("2");
 				}
 			} else {
 				request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 				dispatcher.forward(request, response);
-				System.out.println("3");
 			}
 
 		} catch (Exception e) {
 			request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp");
 			dispatcher.forward(request, response);
-			System.out.println("4 "+ e);
 		}
 
 	}

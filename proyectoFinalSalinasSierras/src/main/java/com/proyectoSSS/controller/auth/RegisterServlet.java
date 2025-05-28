@@ -58,7 +58,6 @@ public class RegisterServlet extends HttpServlet {
 			String username = request.getParameter("userName");
 			String password = request.getParameter("password");
 			boolean checkUser = authModel.checkUser(username);
-			System.out.println(checkUser);
 
 			// si no hay ningun usuario con ese nombre lo guardamos sino lanzamos un error
 			if (checkUser == false) {
