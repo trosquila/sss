@@ -56,7 +56,6 @@ public class AddCarControllerServlet extends HttpServlet {
 		
 		Car car = new Car(0, brand, model, licensePlate, engine, year, insuranceCompany);
 		boolean resulInsertCar = carModel.saveNewCar(car);
-		System.out.println(resulInsertCar);
 		if (resulInsertCar == true) {
 			HttpSession session = request.getSession(false);
 			//para que sea un numero ya que el id esint

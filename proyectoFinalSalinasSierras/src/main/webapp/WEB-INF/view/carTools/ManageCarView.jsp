@@ -30,7 +30,7 @@
 				</tr>
 				
 				<%
-				Object obj = request.getAttribute("carList");
+				//Object obj = request.getAttribute("carList");
 				//da error porque lo detecta como ojeto en un principio no deberia fallar
 				List<Car> carList = (List<Car>) request.getAttribute("carList");
 				for(Car car : carList){
@@ -43,10 +43,10 @@
 					<td><%= car.getEngine() %></td>
 					<td><%= car.getYear() %></td>
 					<td><%= car.getInsuranceCompany() %></td>
-					<td><i class="fa fa-pencil" aria-hidden="true"></i></td>
-					<td><i class="fa fa-user-plus" aria-hidden="true"></i></td>
-					<td><i class="fa fa-bar-chart" aria-hidden="true"></i></td>
-					<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+					<td><a href="${pageContext.request.contextPath}/ManageCarTableController?choose=1&car=<%= car.getLicensePlate() %>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+					<td><a href="${pageContext.request.contextPath}/ManageCarTableController?choose=2&car=<%= car.getLicensePlate() %>"><i class="fa fa-user-plus" aria-hidden="true"></i></a></td>
+					<td><a href="${pageContext.request.contextPath}/ManageCarTableController?choose=3&car=<%= car.getLicensePlate() %>"><i class="fa fa-bar-chart" aria-hidden="true"></i></a></td>
+					<td><a href="${pageContext.request.contextPath}/ManageCarTableController?choose=4&car=<%= car.getLicensePlate() %>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 				</tr>
 				<%}%>
 				

@@ -20,7 +20,7 @@ import com.proyectoSSS.model.car.ManageCarModel.ManageCarModel;
  * Servlet implementation class ManageCarServlet
  */
 @WebServlet("/ManageCar")
-public class ManageCarServlet extends HttpServlet {
+public class ManageCarControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	IManageCarModel manageCar;
 
@@ -31,7 +31,7 @@ public class ManageCarServlet extends HttpServlet {
      * @throws ClassNotFoundException 
      * @see HttpServlet#HttpServlet()
      */
-    public ManageCarServlet() throws ClassNotFoundException, SQLException, IOException {
+    public ManageCarControllerServlet() throws ClassNotFoundException, SQLException, IOException {
         super();
         manageCar = new ManageCarModel();
         

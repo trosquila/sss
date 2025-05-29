@@ -75,5 +75,12 @@ public class Car {
 	public void setInsuranceCompany(String insuranceCompany) {
 		this.insuranceCompany = insuranceCompany;
 	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", brand=" + brand + ", model=" + model + ", licensePlate=" + licensePlate
+				+ ", engine=" + engine + ", year=" + year + ", insuranceCompany=" + insuranceCompany + "]";
+	}
+	
 	
 }

@@ -46,5 +46,82 @@ public class ManageCarModel implements IManageCarModel{
 			return null;
 		}
 	}
+	
+	@Override
+	public boolean updateCar(Car car) {
+	    String query ="UPDATE cars SET brand=?, model=?, engine=?, year=?, insuranceCompany=? WHERE licensePlate = ?";
+	    try {
+	        PreparedStatement ps = connection.prepareStatement(query);
+	        ps.setString(1, car.getBrand());
+	        ps.setString(2, car.getModel());
+	        ps.setString(3, car.getEngine());
+	        ps.setInt(4, car.getYear());
+	        ps.setString(5, car.getInsuranceCompany());
+	        ps.setString(6, car.getLicensePlate());
+
+	        ps.executeUpdate();
+	       
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	    return true;
+	}
+	@Override
+	public int searchCarId(String licensePlateAddOwner) {
+		String query ="SELECT id FROM cars WHERE licensePlate = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, licensePlateAddOwner);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				int licensePlate = rs.getInt(1);
+				return licensePlate;
+			}else {
+				return -1;
+			}
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+	@Override
+	public boolean searchOwner(String owner) {
+		System.out.println("owner "+owner);
+		String query ="SELECT UUID FROM users WHERE UUID = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, owner);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	@Override
+	public boolean insetNewOwnerInCar(int searchCarId, String owner) {
+		
+	String query = "INSERT INTO owners (car_id, user_uuid) VALUES (?, ?)";
+		
+		try {
+			PreparedStatement ps1 = connection.prepareStatement(query);
+
+			ps1.setInt(1, searchCarId);
+			ps1.setString(2, owner);
+
+			ps1.executeUpdate();
+
+			
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
 
 }
