@@ -87,12 +87,12 @@ public class ManageCarTableController extends HttpServlet {
 			boolean updateCar = manageCar.updateCar(car);
 			if (updateCar == true) {
 				
-				session.setAttribute("AlertUpdateCarOk", "El vehículo con matricula "+licensePlate+" fue actualizado correctamente");  
+				session.setAttribute("AlertToTable", "Información, el vehículo con matricula "+licensePlate+" fue actualizado correctamente");  
 	
 				response.sendRedirect("ManageCar");
 				
 			}else {
-				session.setAttribute("AlertUpdateCarError", "El vehículo con matricula "+licensePlate+" no pudo ser actualizado");
+				session.setAttribute("AlertToTable", "El vehículo con matricula "+licensePlate+" no pudo ser actualizado");
 				response.sendRedirect("ManageCar");
 			}
 			break;
@@ -107,14 +107,14 @@ public class ManageCarTableController extends HttpServlet {
 			if (searchOwner == true) {
 				boolean addOwnerToCar = manageCar.insetNewOwnerInCar(searchCarId, owner);
 				if(addOwnerToCar == true) {
-					session.setAttribute("AlertAddUserToCarOk", "El usuario con UUID "+owner+" fue agregado al vehiculo con matricula "+licensePlateAddOwner); 
+					session.setAttribute("AlertToTable", "Informacion,El usuario con UUID "+owner+" fue agregado al vehiculo con matricula "+licensePlateAddOwner); 
 					response.sendRedirect("ManageCar");
 				}else {
-					session.setAttribute("AlertAddUserOk", "Hubo un error al asignar al usuario"); 
+					session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario"); 
 					response.sendRedirect("ManageCar");
 				}
 			}else {
-				session.setAttribute("AlertAddUserOk", "Hubo un error al asignar al usuario"); 
+				session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario"); 
 				response.sendRedirect("ManageCar");
 			}
 			
@@ -127,10 +127,18 @@ public class ManageCarTableController extends HttpServlet {
 				String plateForDelete = request.getParameter("licensePlate");	
 				int searchCarIdDelete = manageCar.searchCarId(plateForDelete);
 				boolean deleteCar = manageCar.deleteCar(searchCarIdDelete);
+				if (deleteCar == true) {
+					session.setAttribute("AlertToTable", "Informacion,El vehiculo con matricula "+plateForDelete+" fue eliminado"); 
+					response.sendRedirect("ManageCar");
+				}else {
+					session.setAttribute("AlertToTable", "Alert,Hubo un error al borrar el vehiculo"); 
+					response.sendRedirect("ManageCar");
+				}
 			break;
 		
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + choose);
+			session.setAttribute("AlertToTable", "Uno un error fatal"); 
+			response.sendRedirect("ManageCar");
 		}
 	}
 

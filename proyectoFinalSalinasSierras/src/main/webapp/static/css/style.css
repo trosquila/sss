@@ -5,13 +5,13 @@ body{
 	font-family: Arial;
 }
 header{
-	height: 20vh;
+	height: 15vh;
 	position: sticky;
       top: 0;
-      background-color: white; /* o el color que necesites */
-      z-index: 1000; /* asegura que esté por encima de otros elementos */
+      background-color: rgb(214, 214, 214); 
+      z-index: 1000;
       padding: 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid rgb(0, 0, 128);
 	
 }
 footer{
@@ -28,7 +28,7 @@ footer{
 h1{
 	color: grey ;
 }
-/*Estilos del login*/
+/*LOGIN*/
 .contenedorPincipal{
 	display: grid;
 	margin: 50px auto;
@@ -77,3 +77,76 @@ h1{
 .formButton:active {
   	background-color: blue;
 }
+
+.info{
+	text-align: center;
+    margin: 60px auto 0 auto;
+    background-color: #b4d2fa;
+    height: 3vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 50%;
+	border: 2px solid #5196f3;
+    color: white;
+}
+.alert{
+	text-align: center;
+    margin: 60px auto 0 auto;
+    background-color: #da9696;
+    height: 3vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 50%;
+    border: 2px solid #a01010;
+    color: white;
+}
+
+/**/
+
+/*MANAGECARVIEW*/
+.contenedor{
+	width: 80%;
+	margin: 6% auto 10% auto;
+	display: flex;
+	flex-direction: column;
+	margin-top: 10%
+}
+.contenedor h1{
+	text-align: center;
+	margin: 30px 0 50px 0;
+}
+.separarFooter{
+	
+}
+.tablaManageCar{
+	border: 2px solid #1EA3EB ;
+	border-collapse: collapse;
+	text-align: center;
+
+}
+
+.tablaManageCar td, th{
+	border: 2px solid #1EA3EB ;
+	padding: 8px;
+}
+
+.pintarTablaMange{
+	background-color: #BBCDF2;
+}
+.btnTabla{
+	font-size: 20pt;
+}
+
+.btnTabla a{
+	color: black;
+}
+
+.btnTabla a:hover{
+	color: grey;
+}
+
+

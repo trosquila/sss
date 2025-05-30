@@ -5,8 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Modificar un coche</title>
-		<link rel="stylesheet" type="text/css"
-		href="${pageContext.request.contextPath}/static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
 	<body>
 		<section>
