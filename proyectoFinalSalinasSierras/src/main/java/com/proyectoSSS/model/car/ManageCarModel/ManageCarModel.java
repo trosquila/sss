@@ -122,6 +122,27 @@ public class ManageCarModel implements IManageCarModel{
 		}
 		return true;
 	}
+	@Override
+	public boolean deleteCar(int plateForDelete) {
+		String query = "DELETE FROM owners WHERE car_id = ?";
+		try {
+			
+			PreparedStatement ps1 = connection.prepareStatement(query);
+			ps1.setInt(1, plateForDelete);
+			ps1.executeUpdate();
+			
+			try {
+				String query2 = "DELETE FROM cars WHERE id = ?";
+				ps1.setInt(1, plateForDelete);
+				ps1.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("fallo al borrar de la tabla coche "+e);
+			}
+		} catch (Exception e) {
+			System.out.println("fallo al borrar de la tabla owner "+e);
+		}
+		return false;
+	}
 
 
 }

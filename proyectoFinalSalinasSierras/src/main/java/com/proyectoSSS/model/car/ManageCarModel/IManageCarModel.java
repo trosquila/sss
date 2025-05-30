@@ -16,4 +16,6 @@ public interface IManageCarModel {
 
 	boolean insetNewOwnerInCar(int searchCarId, String owner);
 
+	boolean deleteCar(int searchCarIdDelete);
+
 }

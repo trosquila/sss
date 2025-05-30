@@ -34,17 +34,17 @@
 					</div>
 					<button>Guardar</button>
 					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/home.jsp">Volver</a>
+					<a href="${pageContext.request.contextPath}/ManageCar">Volver</a>
 				</form>
 			</div>
 			<%
-			if (request.getAttribute("saveCarOk") != null) {
+			if (request.getAttribute("upgrateOk") != null) {
 			%>
-				<p style="color: green;"><%=request.getAttribute("saveCarOk")%></p>
+				<p style="color: green;"><%=request.getAttribute("upgrateOk")%></p>
 			<%
-			}else if(request.getAttribute("saveCarFalse") != null){
+			}else if(request.getAttribute("upgrateError") != null){
 			%>
-				<p style="color: red;"><%=request.getAttribute("saveCarFalse")%></p>
+				<p style="color: red;"><%=request.getAttribute("upgrateError")%></p>
 			<%
 			}
 			

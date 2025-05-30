@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 					    session.setAttribute("UserName", loadUser.getUserName()); 
 					    session.setMaxInactiveInterval(1800); 
 					    
-						request.getRequestDispatcher("/WEB-INF/view/home/home.jsp").forward(request, response);
+						request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp").forward(request, response);
 						
 					}else {
 						request.setAttribute("errorLogin", "Error al iniciar sesión. Intente nuevamente.");

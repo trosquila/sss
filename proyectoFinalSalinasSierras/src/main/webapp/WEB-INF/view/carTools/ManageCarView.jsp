@@ -51,6 +51,19 @@
 				<%}%>
 				
 			</table>
+			<%String alertUpdateCarOk = (String) request.getAttribute("AlertUpdateCarOk"); 
+			if (alertUpdateCarOk != null) { %>
+   				<div class=""><%= alertUpdateCarOk %></div>
+			<% } 
+			String alertUpdateCarError = (String) request.getAttribute("AlertUpdateCarError"); 
+			if (alertUpdateCarError != null) { %>
+   				<div class=""><%= alertUpdateCarError %></div>
+			<% }
+			String alertAddUserToCarOk = (String) request.getAttribute("AlertAddUserToCarOk"); 
+			if (alertUpdateCarError != null) { %>
+   				<div class=""><%= alertAddUserToCarOk %></div>
+			<% }
+			%>
 		</section>
 	</body>
 </html>

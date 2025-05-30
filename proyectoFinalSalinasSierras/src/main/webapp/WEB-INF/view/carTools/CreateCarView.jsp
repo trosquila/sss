@@ -32,7 +32,7 @@
 					</div>
 					<button>Guardar</button>
 					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/home.jsp">Volver</a>
+					<a href="${pageContext.request.contextPath}/ManageCar">Volver</a>
 				</form>
 			</div>
 			<%

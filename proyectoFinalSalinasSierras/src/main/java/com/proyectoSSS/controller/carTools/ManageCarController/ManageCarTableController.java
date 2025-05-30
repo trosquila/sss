@@ -1,10 +1,13 @@
 package com.proyectoSSS.controller.carTools.ManageCarController;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -42,7 +45,7 @@ public class ManageCarTableController extends HttpServlet {
 		switch (choose) {
 		case 1:
 				//se le manda a edit car
-				request.getRequestDispatcher("/WEB-INF/view/carTools/ModifyCarView.jsp?car=\"+carPlate").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/carTools/ModifyCarView.jsp?car="+carPlate).forward(request, response);
 
 			break;
 		case 2:
@@ -55,6 +58,8 @@ public class ManageCarTableController extends HttpServlet {
 			break;
 		case 4:
 				//se le manda a eliminar vehiculo
+				request.getRequestDispatcher("/WEB-INF/view/carTools/DeleteCar.jsp?car="+carPlate).forward(request, response);
+			
 			break;
 		
 		default:
@@ -67,7 +72,7 @@ public class ManageCarTableController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int choose = Integer.parseInt(request.getParameter("choose"));
-		
+		HttpSession session = request.getSession(false);
 		switch (choose) {
 		case 1:
 			String brand = request.getParameter("brand");
@@ -81,9 +86,14 @@ public class ManageCarTableController extends HttpServlet {
 			
 			boolean updateCar = manageCar.updateCar(car);
 			if (updateCar == true) {
-				System.out.println("weno");
+				
+				session.setAttribute("AlertUpdateCarOk", "El vehículo con matricula "+licensePlate+" fue actualizado correctamente");  
+	
+				response.sendRedirect("ManageCar");
+				
 			}else {
-				System.out.println("me mato");
+				session.setAttribute("AlertUpdateCarError", "El vehículo con matricula "+licensePlate+" no pudo ser actualizado");
+				response.sendRedirect("ManageCar");
 			}
 			break;
 		case 2:
@@ -97,14 +107,15 @@ public class ManageCarTableController extends HttpServlet {
 			if (searchOwner == true) {
 				boolean addOwnerToCar = manageCar.insetNewOwnerInCar(searchCarId, owner);
 				if(addOwnerToCar == true) {
-					System.out.println("furrula");
+					session.setAttribute("AlertAddUserToCarOk", "El usuario con UUID "+owner+" fue agregado al vehiculo con matricula "+licensePlateAddOwner); 
+					response.sendRedirect("ManageCar");
 				}else {
-					//mensaje de error
-					System.out.println("error 1");
+					session.setAttribute("AlertAddUserOk", "Hubo un error al asignar al usuario"); 
+					response.sendRedirect("ManageCar");
 				}
 			}else {
-				//mensaje de error
-				System.out.println("error 2");
+				session.setAttribute("AlertAddUserOk", "Hubo un error al asignar al usuario"); 
+				response.sendRedirect("ManageCar");
 			}
 			
 			break;
@@ -113,6 +124,9 @@ public class ManageCarTableController extends HttpServlet {
 			break;
 		case 4:
 				//se le manda a eliminar vehiculo
+				String plateForDelete = request.getParameter("licensePlate");	
+				int searchCarIdDelete = manageCar.searchCarId(plateForDelete);
+				boolean deleteCar = manageCar.deleteCar(searchCarIdDelete);
 			break;
 		
 		default:

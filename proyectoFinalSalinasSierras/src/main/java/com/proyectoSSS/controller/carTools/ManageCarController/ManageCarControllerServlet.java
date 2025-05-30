@@ -43,6 +43,27 @@ public class ManageCarControllerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		
+		//variables para recoger mensajes
+		Object alertUpdateCarOk = session.getAttribute("AlertUpdateCarOk");
+		if (alertUpdateCarOk != null) {
+		    request.setAttribute("AlertUpdateCarOk", alertUpdateCarOk);
+		    session.removeAttribute("AlertUpdateCarOk"); // Muy importante: lo eliminas para que no se repita
+		}
+		
+		Object alertUpdateCarError = session.getAttribute("AlertUpdateCarError");
+		if (alertUpdateCarError != null) {
+		    request.setAttribute("AlertUpdateCarError", alertUpdateCarError);
+		    session.removeAttribute("AlertUpdateCarError"); // Muy importante: lo eliminas para que no se repita
+		}
+		
+		Object alertAddUserToCarOk = session.getAttribute("AlertAddUserToCarOk");
+		if (alertAddUserToCarOk != null) {
+		    request.setAttribute("AlertAddUserToCarOk", alertAddUserToCarOk);
+		    session.removeAttribute("AlertAddUserToCarOk"); // Muy importante: lo eliminas para que no se repita
+		}
+		
+		
 		//para que sea un numero ya que el id esint
 		int uuid = (int) session.getAttribute("UUID");
 		List  <Car> carList = new ArrayList <Car>();

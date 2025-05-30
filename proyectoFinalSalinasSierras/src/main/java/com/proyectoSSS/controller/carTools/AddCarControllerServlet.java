@@ -39,7 +39,7 @@ public class AddCarControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -64,22 +64,22 @@ public class AddCarControllerServlet extends HttpServlet {
 			try {
 				if(assignOwner == true) {
 					request.setAttribute("saveCarOk", "El vehiculo fue registrado.");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
 					dispatcher.forward(request, response);
 				}else {
 					request.setAttribute("saveCarFalse", "Hubo un error al asignar el dueño, vuelva a intentarlo más tarde.");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
 					dispatcher.forward(request, response);
 				}
 			} catch (Exception e) {
 				request.setAttribute("saveCarFalse", "Hubo un error al asignar el dueño, vuelva a intentarlo más tarde.");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
 				dispatcher.forward(request, response);
 			}
 			
 		}else {
 			request.setAttribute("saveCarFalse", "Hubo un error al guardar el vehiculo.");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/createCarView/CreateCarView.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
 			dispatcher.forward(request, response);
 		}
 		
