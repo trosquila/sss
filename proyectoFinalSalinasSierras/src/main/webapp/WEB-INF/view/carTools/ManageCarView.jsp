@@ -7,9 +7,14 @@
 Integer uuid = (Integer) session.getAttribute("UUID");
 System.out.println("UUID en CarView "+uuid);
 if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
-    request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
+	response.sendRedirect("/WEB-INF/index.jsp");
 }
 
+List<Car> carList = (List<Car>) request.getAttribute("carList");
+if(carList.isEmpty()){
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
+	dispatcher.forward(request, response);
+}
 
 %>
 <!DOCTYPE html>
@@ -42,7 +47,6 @@ if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una ses
 				<%
 				//Object obj = request.getAttribute("carList");
 				//da error porque lo detecta como ojeto en un principio no deberia fallar
-				List<Car> carList = (List<Car>) request.getAttribute("carList");
 				int count = 0;
 				for(Car car : carList){
 					if(count%2 == 1) {
@@ -81,10 +85,10 @@ if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una ses
 				}%>
 				
 			</table>
+			<a href="${pageContext.request.contextPath}/ManageCar?goBack=true">Volver</a>
 			<%String alertUpdateCarOk = (String) request.getAttribute("AlertToTable");
-			String[] part = alertUpdateCarOk.split(",");
 			if (alertUpdateCarOk != null) {
-				System.out.println("primer if");
+				String[] part = alertUpdateCarOk.split(",");
 				if(part[0].equals("Informacion")){
 				%>
    					<div class="info"> <p><i class="fa fa-info-circle" aria-hidden="true"></i> <%= part[1] %></p></div>

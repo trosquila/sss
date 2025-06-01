@@ -1,5 +1,6 @@
 package com.proyectoSSS.controller.carTools.ManageCarController;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -44,26 +45,31 @@ public class ManageCarControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
+		//nos permite ir al home si le damos al btn de volver de addCar
+		String goBack = request.getParameter("goBack");
+		if ("true".equals(goBack)) {  // Validación segura
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
+		    dispatcher.forward(request, response);
+		}
+
 		//miramos si la sesión esta activa para que la pagina no pete
-		if (session == null || session.getAttribute("UUID") == null) {
+		if (session.getAttribute("UUID") == null || session.getAttribute("UUID") == "") {
 		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
 		    return;
 		}
+		
 		//variables para recoger mensajes
 		Object alertUpdateCarOk = session.getAttribute("AlertToTable");
 		if (alertUpdateCarOk != null) {
 		    request.setAttribute("AlertToTable", alertUpdateCarOk);
-		    session.removeAttribute("AlertToTable"); // Muy importante: lo eliminas para que no se repita
+		    session.removeAttribute("AlertToTable");
 		}
 		
-		//para que sea un numero ya que el id esint
+		//para que sea un numero ya que el id es int
 		int uuid = (int) session.getAttribute("UUID");
-		System.out.println("UUID: "+uuid);
 		List  <Car> carList = new ArrayList <Car>();
 		carList = manageCar.getUserCars(uuid);
-		for(Car car : carList){
-			System.out.println(car.toString());
-		}
+	
 		
 		request.setAttribute("carList", carList);
 		request.getRequestDispatcher("/WEB-INF/view/carTools/ManageCarView.jsp").forward(request, response);

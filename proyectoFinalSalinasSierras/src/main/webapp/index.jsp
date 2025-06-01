@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%	Integer uuid = (Integer) session.getAttribute("UUID");
-	System.out.println("UUID en CarView "+uuid);
     if (uuid != null) {
-        response.sendRedirect(request.getContextPath() + "/WEB-INF/view/home/Home.jsp");
+    	//se cambio de redirect a dispatcher porque daba error
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
+    	dispatcher.forward(request, response);
     } else {
         response.sendRedirect(request.getContextPath() + "/LoginServlet");
     }
