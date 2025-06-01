@@ -44,20 +44,21 @@ public class ManageCarTableController extends HttpServlet {
 		switch (choose) {
 		case 1:
 				//se le manda a edit car
-				request.getRequestDispatcher("/WEB-INF/view/carTools/ModifyCarView.jsp?car="+carPlate).forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/carTools/ModifyCarView.jsp?car="+carPlate).forward(request, response);
 
 			break;
 		case 2:
 				//se le manda a añadir propietario
-				request.getRequestDispatcher("/WEB-INF/view/carTools/AddOwner.jsp?car="+carPlate).forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/carTools/AddOwner.jsp?car="+carPlate).forward(request, response);
 			
 			break;
 		case 3:
 				//se le manda a añadir gastos
+			request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/carExpenseView.jsp?car="+carPlate).forward(request, response);
 			break;
 		case 4:
 				//se le manda a eliminar vehiculo
-				request.getRequestDispatcher("/WEB-INF/view/carTools/DeleteCar.jsp?car="+carPlate).forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/carTools/DeleteCar.jsp?car="+carPlate).forward(request, response);
 			
 			break;
 		

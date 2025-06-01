@@ -40,7 +40,7 @@ if(carList.isEmpty()){
 					<th>ASEGURADORA</th>
 					<th>EDITAR VEHÍCULO</th>
 					<th>AÑADIR PROPIETARIO</th>
-					<th>AÑADIR GASTOS</th>
+					<th>GESTIONAR GASTOS</th>
 					<th>ELIMINAR</th>
 				</tr>
 				
