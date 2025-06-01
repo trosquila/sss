@@ -77,7 +77,6 @@ public class LoginServlet extends HttpServlet {
 						}
 					    session.setAttribute("UUID", loadUser.getUuid()); 
 					    session.setAttribute("UserName", loadUser.getUserName()); 
-					    session.setMaxInactiveInterval(1800); 
 					    
 						request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp").forward(request, response);
 						

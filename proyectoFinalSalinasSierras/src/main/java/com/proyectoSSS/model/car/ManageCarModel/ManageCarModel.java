@@ -40,7 +40,9 @@ public class ManageCarModel implements IManageCarModel{
 				Car car = new Car(id, brand, model, licensePlate ,engine,year, insuranceCompany);
 				carList.add(car);
 			}
-			
+			//pruebo a cerrar la conexion porque en la tabla hay problemas
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
 			return carList;
 		} catch (Exception e) {
 			return null;

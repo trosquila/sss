@@ -4,27 +4,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+		href="${pageContext.request.contextPath}/static/css/style.css">
 <title>Gestor de vehiculos</title>
 </head>
 <body>
-	<section>
+	<header> </header>
+	<section class="contenedor">
 		<h1>Cree una cuenta</h1>
 		<form action="${pageContext.request.contextPath}/RegisterServlet"
-			method="POST">
-			<div>
+			method="POST" class="contenedorInicioSesion">
+			<div class="contenidoFormInicioSesion">
 				<label>Nombre de usuario</label> <input type="text" name="userName">
 			</div>
-			<div>
+			<div class="contenidoFormInicioSesion">
 				<label>Contraseña</label> <input type="password" name="password">
 			</div>
-			<button type="submit">Iniciar sesión</button>
+			<div class="contenedorBtnForm2">
+					<button class="loginBtn">Crear usuario</button>
+					<a href="${pageContext.request.contextPath}/index.jsp">Volver</a>
+				</div>
 			<p>¿Ya tienes cuenta? <a href="${pageContext.request.contextPath}/LoginServlet">Inicia sesión aquí</a></p>
 		</form>
 		<%if (request.getAttribute("errorRegistro") != null){%>
 			<div>
-				 <%= request.getAttribute("errorRegistro") %>
+				<div class="alert"> <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= request.getAttribute("errorRegistro") %></p></div>
 			</div>
 		<%}%>
 	</section>
+	<footer>
+	</footer>
 </body>
 </html>

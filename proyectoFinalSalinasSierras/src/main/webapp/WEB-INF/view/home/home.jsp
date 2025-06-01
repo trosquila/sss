@@ -9,8 +9,8 @@
 		href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
 	<body>
-		<h1>Home</h1>
 		<header> </header>
+		<h1>Home</h1>
 		<section class="menuHome">
 			<div class ="colocarOpciones">
 				<div>

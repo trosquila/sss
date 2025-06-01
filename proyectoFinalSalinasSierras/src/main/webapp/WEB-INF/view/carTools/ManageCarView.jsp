@@ -2,6 +2,16 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.List" %>
     <%@ page import="com.proyectoSSS.model.car.Car" %>
+<%	 
+	//lo pongo en string porq en int no me deja verificarlo bien
+Integer uuid = (Integer) session.getAttribute("UUID");
+System.out.println("UUID en CarView "+uuid);
+if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
+    request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
+}
+
+
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -85,5 +95,6 @@
 				}
 			} %>
 		</section>
+		<footer> </footer>
 	</body>
 </html>

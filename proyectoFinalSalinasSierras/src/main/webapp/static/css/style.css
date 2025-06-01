@@ -8,15 +8,14 @@ header{
 	height: 15vh;
 	position: sticky;
       top: 0;
-      background-color: rgb(214, 214, 214); 
+      background-color: #daeff7; 
       z-index: 1000;
       padding: 10px;
-      border-bottom: 1px solid rgb(0, 0, 128);
-	
 }
+
 footer{
     width: 100%;
-    background-color: #8aef96 ;
+    background-color: #4a7384 ;
     height: 50px;
     color: white;
     font-family: montserrat, arial;
@@ -25,57 +24,61 @@ footer{
     z-index: 100001;
     text-align: end;
 }
+
 h1{
 	color: grey ;
 }
 /*LOGIN*/
-.contenedorPincipal{
-	display: grid;
-	margin: 50px auto;
-	justify-content: center;
-	text-align: center;
-}
-.formStyle{
+.contenedorInicioSesion{
 	display: flex;
 	flex-direction: column;
+	margin: auto;
+	min-height: 30vh;
+	gap: 20px;
+	background-color: #D3EAF4;
+	padding: 30px;
+	justify-content: center;
+}
 
-	height: 25vh;
-	gap:10px;
-	border: 1px solid grey;
-	border-radius: 10px;
-	padding: 20px;
-}
-.formStyle input{
-	border-radius: 5px;
-	height: 2vh;
-	width: 50%;
-	
-}
-.contenidoForm{
+.contenidoFormInicioSesion{
 	display: flex;
 	gap: 2px;
 	justify-content: flex-end;
-	gap: 2px
-}
-.contenedorBtnForm {
-  display: flex;
-  justify-content: center;
+	gap: 2px;
 }
 
-.formButton{
-	margin-top:30px;
-	width: 10vh;
-	height: 4vh;
-	border: 0px;
-	border-radius: 5px;
-	font-weight: bold;
-}
-.formButton:hover {
-  	background-color: red;
+.linkInicio{
+	text-align: center;
 }
 
-.formButton:active {
-  	background-color: blue;
+.linkInicio a:hover{
+	color: black;
+}
+.linkInicio a:active{
+	color: #4a7384;
+}
+.contenedorBtnForm{
+	margin-top: 23px;
+	display: flex;
+	justify-content: center;
+}
+
+.loginBtn{
+	width: 30%;
+	height: 40px;
+	border: 1px solid #11567b ;
+	background-color: #ffffff;
+	
+}
+
+.loginBtn:hover{
+	background-color: #e5feff;
+}
+
+.loginBtn:active{
+	background-color: #98ced1;
+    color: white;
+    border: 1px solid #ffffff;
 }
 
 .info{
@@ -88,9 +91,9 @@ h1{
     justify-content: center;
     padding: 5px;
     width: 50%;
-	border: 2px solid #5196f3;
     color: white;
 }
+
 .alert{
 	text-align: center;
     margin: 60px auto 0 auto;
@@ -115,13 +118,16 @@ h1{
 	flex-direction: column;
 	margin-top: 10%
 }
+
 .contenedor h1{
 	text-align: center;
 	margin: 30px 0 50px 0;
 }
+
 .separarFooter{
 	
 }
+
 .tablaManageCar{
 	border: 2px solid #1EA3EB ;
 	border-collapse: collapse;
@@ -137,6 +143,7 @@ h1{
 .pintarTablaMange{
 	background-color: #BBCDF2;
 }
+
 .btnTabla{
 	font-size: 20pt;
 }

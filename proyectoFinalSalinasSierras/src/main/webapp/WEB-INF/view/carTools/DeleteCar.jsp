@@ -22,6 +22,7 @@
 					<a href="${pageContext.request.contextPath}/ManageCar">Volver</a>
 				</form>
 			</div>
+			<footer> </footer>
 		</section>
 	</body>
 </html>

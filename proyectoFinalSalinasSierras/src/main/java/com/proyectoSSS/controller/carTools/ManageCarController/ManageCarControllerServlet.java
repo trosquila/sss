@@ -44,6 +44,11 @@ public class ManageCarControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
+		//miramos si la sesión esta activa para que la pagina no pete
+		if (session == null || session.getAttribute("UUID") == null) {
+		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
+		    return;
+		}
 		//variables para recoger mensajes
 		Object alertUpdateCarOk = session.getAttribute("AlertToTable");
 		if (alertUpdateCarOk != null) {
@@ -53,10 +58,17 @@ public class ManageCarControllerServlet extends HttpServlet {
 		
 		//para que sea un numero ya que el id esint
 		int uuid = (int) session.getAttribute("UUID");
+		System.out.println("UUID: "+uuid);
 		List  <Car> carList = new ArrayList <Car>();
 		carList = manageCar.getUserCars(uuid);
+		for(Car car : carList){
+			System.out.println(car.toString());
+		}
+		
 		request.setAttribute("carList", carList);
 		request.getRequestDispatcher("/WEB-INF/view/carTools/ManageCarView.jsp").forward(request, response);
+
+
 	}
 
 	/**
