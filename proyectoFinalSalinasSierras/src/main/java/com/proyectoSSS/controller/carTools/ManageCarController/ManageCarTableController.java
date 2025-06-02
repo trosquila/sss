@@ -54,7 +54,7 @@ public class ManageCarTableController extends HttpServlet {
 			break;
 		case 3:
 				//se le manda a añadir gastos
-			request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/carExpenseView.jsp?car="+carPlate).forward(request, response);
+			response.sendRedirect("ExpensiveController?car="+carPlate);
 			break;
 		case 4:
 				//se le manda a eliminar vehiculo
@@ -118,9 +118,6 @@ public class ManageCarTableController extends HttpServlet {
 				response.sendRedirect("ManageCar");
 			}
 			
-			break;
-		case 3:
-				//se le manda a añadir gastos
 			break;
 		case 4:
 				//se le manda a eliminar vehiculo

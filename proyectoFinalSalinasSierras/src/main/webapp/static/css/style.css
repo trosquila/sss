@@ -124,19 +124,18 @@ h1{
 	margin: 30px 0 50px 0;
 }
 
-.separarFooter{
-	
-}
 
 .tablaManageCar{
-	border: 2px solid #1EA3EB ;
+	/*border: 2px solid #1EA3EB ;*/
+	border: 2px solid white ;
 	border-collapse: collapse;
 	text-align: center;
 
 }
 
 .tablaManageCar td, th{
-	border: 2px solid #1EA3EB ;
+	/*border: 2px solid #1EA3EB ;*/
+	border: 2px solid white ;
 	padding: 8px;
 }
 
