@@ -61,6 +61,11 @@ public class Expense {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	@Override
+	public String toString() {
+		return "Expense [expenseId=" + expenseId + ", mileage=" + mileage + ", price=" + price + ", expenseConcept="
+				+ expenseConcept + ", idCar=" + idCar + ", idUser=" + idUser + ", date=" + date + "]";
+	}
 
 	
 }

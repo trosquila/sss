@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.List, com.proyectoSSS.model.expenseModel.Expense" %>
 <%
-
+String plate = request.getParameter("plate");
 Integer uuid = (Integer) session.getAttribute("UUID");
 System.out.println("UUID en CarExpenseView "+uuid);
 if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
@@ -10,10 +10,7 @@ if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una ses
 }
 
 List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveList");
-if(expensiveList.isEmpty()){
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
-	dispatcher.forward(request, response);
-}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -27,9 +24,23 @@ if(expensiveList.isEmpty()){
 		<header></header>
 		<section class="contenedor">
 			<h1>Menú de gastos</h1>
-			<h3>Matrícula del vehiculo: </h3>
+			<h3>Matrícula del vehiculo: <%= plate%></h3>
+			
+			<%
+			if(expensiveList.isEmpty()){
+			%>
 			<div>
-				<a href="">Añadir Gasto</a>
+				<p>Este vehiculo no tiene ningún gasto</p>
+				<a  href="${pageContext.request.contextPath}/ExpensiveTableController?choose=3&plate=<%= plate%>">Añadir gasto</a>
+				<a>Volver</a>
+			</div>
+			
+			<% 
+			}else{
+			%>
+			<div>
+				<a  href="${pageContext.request.contextPath}/ExpensiveTableController?choose=3&plate=<%= plate%>">Añadir Gasto</a>
+				<a>Volver</a>
 			</div>
 			<table>
 				<tr class="pintarTablaMange">
@@ -78,6 +89,9 @@ if(expensiveList.isEmpty()){
 					count++;
 				}%>
 			</table>
+			<% 	
+			}%>
+			
 		</section>
 		<footer> </footer>
 	</body>

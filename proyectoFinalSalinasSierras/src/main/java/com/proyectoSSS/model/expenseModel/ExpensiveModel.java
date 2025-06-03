@@ -40,14 +40,59 @@ public class ExpensiveModel implements IExpensiveModel{
 				Expense expense = new Expense(idExpense, mileage, price, expeseConcept, idCar, idUser, date);
 				list.add(expense);
 			}
-			System.out.println("bien");
 			return list;
 			
 			
 		} catch (Exception e) {
-			System.out.println("mal "+e);
 			return null;
 		}
+	}
+	
+	@Override
+	public boolean insertExpensive(Expense expensive) {
+		String query = "INSERT INTO carexpense(mileage, price, expenseConcept, idCar, idUser) VALUES (?,?,?,?,?) ";
+		try {
+			PreparedStatement ps1 = connection.prepareStatement(query);
+
+			ps1.setInt(1, expensive.getMileage());
+			ps1.setDouble(2, expensive.getPrice());
+			ps1.setString(3, expensive.getExpenseConcept());
+			ps1.setInt(4, expensive.getIdCar());
+			ps1.setInt(5, expensive.getIdUser());
+			ps1.executeUpdate();
+
+			
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	@Override
+	public Expense getExpensive(int expenseId) {
+		String query = "SELECT  mileage, price, expenseConcept, idCar, idUser FROM carexpense WHERE idExpense = ?";
+
+		try {
+			PreparedStatement ps2 = connection.prepareStatement(query);
+			List <Expense> list = new ArrayList <Expense>();
+			ps2.setInt(1, expenseId);
+			ResultSet rs = ps2.executeQuery();
+			if(rs.next()) {
+				int idExpense =expenseId; 
+				int mileage = rs.getInt(2); 
+				double price = rs.getDouble(3); 
+				String expeseConcept = rs.getString(4);
+				int idCar = rs.getInt(5);
+				int idUser = rs.getInt(6);
+				String date = "";
+				Expense expense = new Expense(idExpense, mileage, price, expeseConcept, idCar, idUser, date);
+				return expense;
+			}
+			
+		}catch (Exception e) {
+			return null;
+		}
+		return null;
+		
 	}
 
 

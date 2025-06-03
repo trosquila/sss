@@ -6,4 +6,8 @@ public interface IExpensiveModel {
 
 	List<Expense> getCarExpense(String plate, int uuid);
 
+	boolean insertExpensive(Expense expensive);
+
+	Expense getExpensive(int expenseId);
+
 }
