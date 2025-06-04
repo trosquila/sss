@@ -4,7 +4,6 @@
 <%
 String plate = request.getParameter("plate");
 Integer uuid = (Integer) session.getAttribute("UUID");
-System.out.println("UUID en CarExpenseView "+uuid);
 if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
 	response.sendRedirect("/WEB-INF/index.jsp");
 }
@@ -27,7 +26,7 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 			<h3>Matrícula del vehiculo: <%= plate%></h3>
 			
 			<%
-			if(expensiveList.isEmpty()){
+			if(expensiveList == null || expensiveList.isEmpty()){
 			%>
 			<div>
 				<p>Este vehiculo no tiene ningún gasto</p>

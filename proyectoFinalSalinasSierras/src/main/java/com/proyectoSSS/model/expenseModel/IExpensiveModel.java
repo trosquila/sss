@@ -10,4 +10,7 @@ public interface IExpensiveModel {
 
 	Expense getExpensive(int expenseId);
 
+
+	boolean updateExpense(Expense expensiveAdd, int idExpense);
+
 }

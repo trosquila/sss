@@ -3,7 +3,7 @@
       <%@ page import="java.util.List, com.proyectoSSS.model.expenseModel.Expense" %>
     <%
     String plate = request.getParameter("plate");
-    Expense expense = (Expense) request.getAttribute("expensive");
+    Expense expense = (Expense) request.getAttribute("expense");
     %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,8 @@
 		<section>
 			<div>
 				<form action="${pageContext.request.contextPath}/ExpensiveTableController" method="POST">
-				<input type="hidden" name="choose" value="3">
+				<input type="hidden" name="choose" value="1">
+				<input type="hidden" name="expense" value="<%= expense.getExpenseId()%>">
 				<input type="hidden" name="plate" value="<%=plate %>">
 					<div>
 						<label>Kilometraje</label>

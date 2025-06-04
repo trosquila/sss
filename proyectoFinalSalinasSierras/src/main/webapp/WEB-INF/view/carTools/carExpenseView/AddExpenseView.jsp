@@ -15,6 +15,7 @@
 			<div>
 				<form action="${pageContext.request.contextPath}/ExpensiveTableController" method="POST">
 				<input type="hidden" name="choose" value="3">
+				
 				<input type="hidden" name="plate" value="<%=plate %>">
 					<div>
 						<label>Kilometraje</label>

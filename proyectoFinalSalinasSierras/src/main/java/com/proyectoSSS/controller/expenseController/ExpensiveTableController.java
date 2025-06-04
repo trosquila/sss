@@ -45,8 +45,10 @@ public class ExpensiveTableController extends HttpServlet {
 		case 1:
 				//se le manda a edit expenseexpense
 			int expenseId = Integer.parseInt(request.getParameter("expense"));
-			Expense expensive = expensiveModel.getExpensive(expenseId);
-			request.setAttribute("expensive", expensive);
+
+			Expense expense = expensiveModel.getExpensive(expenseId);
+			System.out.println("id "+expenseId+" Gasto: "+expense.toString());
+			request.setAttribute("expense", expense);
 			request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/EditExpenseView.jsp").forward(request, response);
 			break;
 		case 2:
@@ -79,15 +81,22 @@ public class ExpensiveTableController extends HttpServlet {
 		}
 		
 		int choose = Integer.parseInt(request.getParameter("choose"));
-		String plate = request.getParameter("plate");
+		
 		int mileage;
 		int price;
 	    String expenseConcept;
 	    int idCar;
         int idUser = (int) session.getAttribute("UUID");
-        
+
         switch (choose) {
 		case 1:
+			int expense =  Integer.parseInt(request.getParameter("expense"));
+			mileage = Integer.parseInt(request.getParameter("mileage"));
+			price = Integer.parseInt(request.getParameter("price"));
+			expenseConcept = request.getParameter("expenseConcept");
+			idCar = Integer.parseInt(request.getParameter("idCar"));
+	        Expense expensiveAdd = new Expense(0, mileage, price, expenseConcept, idCar, idUser, "");
+	        boolean expenseUpdate = expensiveModel.updateExpense(expensiveAdd, expense);
 			break;
 		case 2:
 			break;
@@ -100,6 +109,7 @@ public class ExpensiveTableController extends HttpServlet {
 	        boolean insertExpensive = expensiveModel.insertExpensive(expensive);
 	        System.out.println(expensive.toString());
 	        System.out.println(choose);
+	        //falta control de errores
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + choose);
