@@ -111,6 +111,21 @@ public class ExpensiveModel implements IExpensiveModel{
 		}
 		return true;
 	}
+	@Override
+	public boolean deleteExpense(int idExpense) {
+		String query = "DELETE FROM carexpense WHERE idExpense = ?";
+		try {
+			
+			PreparedStatement ps1 = connection.prepareStatement(query);
+			ps1.setInt(1, idExpense);
+			ps1.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		return true;
+	}
 
 
 }

@@ -13,4 +13,6 @@ public interface IExpensiveModel {
 
 	boolean updateExpense(Expense expensiveAdd, int idExpense);
 
+	boolean deleteExpense(int expense);
+
 }

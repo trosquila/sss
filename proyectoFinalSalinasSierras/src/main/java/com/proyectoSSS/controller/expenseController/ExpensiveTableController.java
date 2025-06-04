@@ -47,14 +47,14 @@ public class ExpensiveTableController extends HttpServlet {
 			int expenseId = Integer.parseInt(request.getParameter("expense"));
 
 			Expense expense = expensiveModel.getExpensive(expenseId);
-			System.out.println("id "+expenseId+" Gasto: "+expense.toString());
 			request.setAttribute("expense", expense);
 			request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/EditExpenseView.jsp").forward(request, response);
 			break;
 		case 2:
 				//se le manda a añadir expense
-			 expenseId = Integer.parseInt(request.getParameter("expenseexpense"));
-			 
+			 expenseId = Integer.parseInt(request.getParameter("expense"));
+			 request.setAttribute("expense", expenseId);
+				request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/DeleteExpense.jsp").forward(request, response);
 			
 			break;
 		case 3:
@@ -97,8 +97,11 @@ public class ExpensiveTableController extends HttpServlet {
 			idCar = Integer.parseInt(request.getParameter("idCar"));
 	        Expense expensiveAdd = new Expense(0, mileage, price, expenseConcept, idCar, idUser, "");
 	        boolean expenseUpdate = expensiveModel.updateExpense(expensiveAdd, expense);
+	        //falta control de errores
 			break;
 		case 2:
+			expense =  Integer.parseInt(request.getParameter("expenseId"));
+			boolean deleteExpense = expensiveModel.deleteExpense(expense);
 			break;
 		case 3:
 			mileage = Integer.parseInt(request.getParameter("mileage"));
