@@ -9,30 +9,30 @@
 		href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
 	<body>
-		<section>
+		<header></header>
+		<section class="conetenedorPrincipal">
+		<h1>Añadir un vehiculo</h1>
 			<div>
-				<form action="${pageContext.request.contextPath}/AddCarController" method="POST">
-					<div>
-						<label>Marca</label>
+				<form action="${pageContext.request.contextPath}/AddCarController" method="POST" class="formulario">
+					
+						<label>Marca:</label>
 						<input type="text"  name="brand">
-						<label>Modelo</label>
+						<label>Modelo:</label>
 						<input type="text" name="model">
-					</div>
-					<div>
-						<label>Matricula</label>
+				
+						<label>Matricula:</label>
 						<input type="text" name="licensePlate">
 						<label>Motor</label>
 						<input type="text" name="engine">
-					</div>
-					<div>
-						<label>Año</label>
+				
+						<label>Año:</label>
 						<input type="number" name="year">
-						<label>Compañia aseguradora</label>
+						<label>Aseguradora:</label>
 						<input type="text" name="insuranceCompany">
-					</div>
-					<button>Guardar</button>
-					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/ManageCar?goBack=true">Volver</a>
+					
+						<button class="btn">Guardar</button>
+						<input type="reset" value="Borrar" class="btn1">
+						<a href="${pageContext.request.contextPath}/ManageCar?goBack=true" class="btn txtEnlacebtn">Volver</a>
 				</form>
 			</div>
 			<%

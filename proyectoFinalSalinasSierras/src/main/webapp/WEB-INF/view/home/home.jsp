@@ -10,17 +10,17 @@
 	</head>
 	<body>
 		<header> </header>
-		<h1>Home</h1>
-		<section class="menuHome">
+		<section class="conetenedorPrincipal">
+			<h1>Home</h1>
 			<div class ="colocarOpciones">
 				<div>
-					<a href="${pageContext.request.contextPath}/AddCarController">Añadir Vehiculo</a>
+					<a href="${pageContext.request.contextPath}/AddCarController" ><img class="colocarImgHome"src="<%= request.getContextPath() %>/static/img/addCar.png"></a>
 				</div>
 				<div>
-					<a href="${pageContext.request.contextPath}/ManageCar">Administrar mis vehiculos</a>
+					<a href="${pageContext.request.contextPath}/ManageCar"><img class="colocarImgHome" src="<%= request.getContextPath() %>/static/img/myCars.png"></a>
 				</div>
 				<div>
-					<a href="${pageContext.request.contextPath}/SesionClose">Cerrar sesión</a>
+					<a href="${pageContext.request.contextPath}/SesionClose"><img class="colocarImgHome"" src="<%= request.getContextPath() %>/static/img/logout.png"></a>
 				</div>
 			</div>
 

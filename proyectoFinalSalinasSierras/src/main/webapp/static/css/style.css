@@ -27,6 +27,50 @@ footer{
 
 h1{
 	color: grey ;
+	font-size: 50pt;
+}
+
+.btn{
+	width: 100px;
+	height: 40px;
+	border: 1px solid #11567b ;
+	background-color: #ffffff;
+	text-align: center;
+	align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.btn:hover{
+	background-color: #e5feff;
+}
+
+.btn:active{
+	background-color: #98ced1;
+    color: white;
+    border: 1px solid #ffffff;
+}
+
+.txtEnlacebtn{
+	 text-decoration: unset;
+	color: black;
+	font-size: 13px;
+}
+.btn1{
+	width: 100px;
+	height: 40px;
+	border: 1px solid #11567b ;
+	background-color: #98ced1;
+}
+
+.btn1:hover{
+	background-color: #e5feff;
+}
+
+.btn1:active{
+	background-color: #98ced1;
+    color: white;
+    border: 1px solid #ffffff;
 }
 /*LOGIN*/
 .contenedorInicioSesion{
@@ -108,8 +152,27 @@ h1{
     color: white;
 }
 
-/**/
+/*HOME*/
+.conetenedorPrincipal{
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+.colocarOpciones{
+	display: flex;
+}
+.colocarImgHome{
+	display: flex;
+	margin: 20% auto;
+	width: 20%;
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.colocarImgHome:hover{
+	transform: translateY(-5px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4)
+}
 /*MANAGECARVIEW*/
 .contenedor{
 	width: 80%;
@@ -156,3 +219,20 @@ h1{
 }
 
 
+/*ADD CAR*/
+.formulario{
+	display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr 1fr;
+	width: 50%;
+	margin: auto;
+	gap:20px;
+	text-align: end;
+}
+.formulario label{
+	font-weight: bold;
+}
+
+.colocarFormAddCar{
+	display: flex;
+	justify-content: space-around;
+}
