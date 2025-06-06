@@ -9,7 +9,9 @@
 		href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
 	<body>
-		<section>
+		<header></header>
+		<section class="conetenedorPrincipal">
+		<h1>Eliminar vehículo</h1>
 			<div>
 				<form action="${pageContext.request.contextPath}/ManageCarTableController" method="POST">
 					<%String carPlate = request.getParameter("car");%>
@@ -18,8 +20,10 @@
 					<div>
 						<p>Seguro que desea eliminar el vehiculo con matricula <%= carPlate %> </p>
 					</div>
-					<button>Eliminar</button>
-					<a href="${pageContext.request.contextPath}/ManageCar">Volver</a>
+					<div class="colocar2Botones">
+						<button class="btn">Eliminar</button>
+						<a href="${pageContext.request.contextPath}/ManageCar" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+					</div>
 				</form>
 			</div>
 			<footer> </footer>

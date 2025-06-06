@@ -8,32 +8,37 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
 	<body>
-		<section>
+		<header></header>
+		<section class="conetenedorPrincipal">
+			<h1>Editar vehiculo</h1>
 			<div>
 				<form action="${pageContext.request.contextPath}/ManageCarTableController" method="POST">
 					<%String carPlate = request.getParameter("car");%>
 					<input type="hidden" name="choose" value="1">
-					<div>
-						<label>Marca</label>
-						<input type="text"  name="brand">
-						<label>Modelo</label>
-						<input type="text" name="model">
+					<div class="formulario">
+
+							<label>Marca:</label>
+							<input type="text"  name="brand">
+							<label>Modelo:</label>
+							<input type="text" name="model">
+
+							<label>Matricula:</label>
+							<input type="text" name="licensePlate" value="<%= carPlate %>" readonly>
+							<label>Motor:</label>
+							<input type="text" name="engine">
+
+							<label>Año:</label>
+							<input type="number" name="year">
+							<label>Aseguradora:</label>
+							<input type="text" name="insuranceCompany">
+
 					</div>
-					<div>
-						<label>Matricula</label>
-						<input type="text" name="licensePlate" value="<%= carPlate %>" readonly>
-						<label>Motor</label>
-						<input type="text" name="engine">
+					<div class="colocarBtnForm">
+						<button class="btn">Guardar</button>
+						<input type="reset" value="Borrar" class="btn1">
+						<a href="${pageContext.request.contextPath}/ManageCar" class="btn txtEnlacebtn colocarBtnCreateCar">Volver</a>
 					</div>
-					<div>
-						<label>Año</label>
-						<input type="number" name="year">
-						<label>Compañia aseguradora</label>
-						<input type="text" name="insuranceCompany">
-					</div>
-					<button>Guardar</button>
-					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/ManageCar">Volver</a>
+					
 				</form>
 			</div>
 			<%

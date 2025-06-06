@@ -21,9 +21,9 @@
 			<div class="contenidoFormInicioSesion">
 				<label>Contraseña</label> <input type="password" name="password">
 			</div>
-			<div class="contenedorBtnForm2">
-					<button class="loginBtn">Crear usuario</button>
-					<a href="${pageContext.request.contextPath}/index.jsp">Volver</a>
+			<div class="btnSession">
+					<button class="btn ">Crear usuario</button>
+					<a href="${pageContext.request.contextPath}/index.jsp" class="btn1 txtEnlacebtn">Volver</a>
 				</div>
 			<p>¿Ya tienes cuenta? <a href="${pageContext.request.contextPath}/LoginServlet">Inicia sesión aquí</a></p>
 		</form>

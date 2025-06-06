@@ -85,7 +85,9 @@ if(carList.isEmpty()){
 				}%>
 				
 			</table>
-			<a href="${pageContext.request.contextPath}/ManageCar?goBack=true">Volver</a>
+			<div>
+				<a href="${pageContext.request.contextPath}/ManageCar?goBack=true" class="btnSoloCentrado txtEnlacebtn">Volver</a>
+			</div>
 			<%String alertUpdateCarOk = (String) request.getAttribute("AlertToTable");
 			if (alertUpdateCarOk != null) {
 				String[] part = alertUpdateCarOk.split(",");

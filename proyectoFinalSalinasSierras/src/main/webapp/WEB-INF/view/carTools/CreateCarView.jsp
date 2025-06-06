@@ -13,8 +13,8 @@
 		<section class="conetenedorPrincipal">
 		<h1>Añadir un vehiculo</h1>
 			<div>
-				<form action="${pageContext.request.contextPath}/AddCarController" method="POST" class="formulario">
-					
+				<form action="${pageContext.request.contextPath}/AddCarController" method="POST">
+					<div class="formulario">
 						<label>Marca:</label>
 						<input type="text"  name="brand">
 						<label>Modelo:</label>
@@ -29,10 +29,13 @@
 						<input type="number" name="year">
 						<label>Aseguradora:</label>
 						<input type="text" name="insuranceCompany">
-					
+					</div>
+					<div class="colocarBtnForm">
 						<button class="btn">Guardar</button>
-						<input type="reset" value="Borrar" class="btn1">
-						<a href="${pageContext.request.contextPath}/ManageCar?goBack=true" class="btn txtEnlacebtn">Volver</a>
+						<input type="reset" value="Borrar" class="btn">
+						<a href="${pageContext.request.contextPath}/ManageCar?goBack=true" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+					</div>
+						
 				</form>
 			</div>
 			<%
