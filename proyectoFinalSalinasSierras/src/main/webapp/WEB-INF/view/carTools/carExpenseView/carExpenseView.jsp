@@ -23,15 +23,18 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 		<header></header>
 		<section class="contenedor">
 			<h1>Menú de gastos</h1>
-			<h3>Matrícula del vehiculo: <%= plate%></h3>
+			<h3>Matrícula del vehiculo:<%= plate%></h3>
 			
 			<%
 			if(expensiveList == null || expensiveList.isEmpty()){
 			%>
 			<div>
 				<p>Este vehiculo no tiene ningún gasto</p>
-				<a  href="${pageContext.request.contextPath}/ExpensiveTableController?choose=3&plate=<%= plate%>">Añadir gasto</a>
-				<a>Volver</a>
+				<div class="btnExpenesView">
+					<a  href="${pageContext.request.contextPath}/ExpensiveTableController?choose=3&plate=<%= plate%>" class="btn txtEnlacebtn colocarBtnCreateCar">Añadir gasto</a>
+					<a href="${pageContext.request.contextPath}/ManageCar?plate=<%= plate%>" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+				</div>
+				
 			</div>
 			
 			<% 
@@ -89,8 +92,20 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 				}%>
 			</table>
 			<% 	
-			}%>
-			
+			}
+			String alertExpensive = (String) request.getAttribute("AlertExpensive");
+			System.out.println("mensaje: "+alertExpensive);
+			if (alertExpensive != null) {
+				String[] part = alertExpensive.split(",");
+				if(part[0].equals("Informacion")){
+				%>
+   					<div class="info"> <p><i class="fa fa-info-circle" aria-hidden="true"></i> <%= part[1] %></p></div>
+				<% }else if(part[0].equals("Alert")){
+				%>
+   					<div class="alert"> <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= part[1] %></p></div>
+				<%
+				}
+			} %>
 		</section>
 		<footer> </footer>
 	</body>

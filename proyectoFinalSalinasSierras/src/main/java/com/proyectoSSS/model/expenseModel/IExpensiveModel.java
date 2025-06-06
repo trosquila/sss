@@ -15,4 +15,6 @@ public interface IExpensiveModel {
 
 	boolean deleteExpense(int expense);
 
+	int getIdCarForPlate(String carPlate);
+
 }

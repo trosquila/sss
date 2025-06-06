@@ -42,11 +42,17 @@ public class ExpensiveController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String plate = request.getParameter("car");
 		HttpSession session = request.getSession(false);
-		//miramos si la sesión esta activa para que la pagina no pete
-		if (session.getAttribute("UUID") == null || session.getAttribute("UUID") == "") {
+		
+		//miramos si la sesión esta activa para que la pagina no pete, se pone toString para que isEmpy funcione
+		if (session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
 			response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
 			return;
 		}
+		
+		//para madar el error
+		Object alertExpense = session.getAttribute("AlertExpensive");
+		request.setAttribute("AlertExpensive", alertExpense);
+		
 		//para que sea un numero ya que el id esint
 		int uuid = (int) session.getAttribute("UUID");
 		List <Expense> expensiveList = new ArrayList<Expense>();

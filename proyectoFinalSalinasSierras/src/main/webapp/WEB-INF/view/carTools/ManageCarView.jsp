@@ -11,10 +11,7 @@ if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una ses
 }
 
 List<Car> carList = (List<Car>) request.getAttribute("carList");
-if(carList.isEmpty()){
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
-	dispatcher.forward(request, response);
-}
+
 
 %>
 <!DOCTYPE html>
@@ -28,7 +25,13 @@ if(carList.isEmpty()){
 	<body>
 		<header></header>
 		<section class="contenedor">
-			<h1>Listado de vehiculos en propiedad</h1>
+		<h1>Listado de vehiculos en propiedad</h1>
+		<%if(carList.isEmpty()){
+		%>
+			<p style="text-align: center">No se encontro ningún vehiculo a su nombre, pruebe a agregar uno desde la sección de añadir vehiculo en el menú de inicio.</p>
+		<%
+		}else{
+		%>
 			<table class="tablaManageCar">
 				<tr class="pintarTablaMange">
 					<th>ID</th>
@@ -85,6 +88,9 @@ if(carList.isEmpty()){
 				}%>
 				
 			</table>
+		<%
+		}
+		 %>
 			<div>
 				<a href="${pageContext.request.contextPath}/ManageCar?goBack=true" class="btnSoloCentrado txtEnlacebtn">Volver</a>
 			</div>

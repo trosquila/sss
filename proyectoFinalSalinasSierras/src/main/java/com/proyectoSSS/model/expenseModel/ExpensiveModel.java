@@ -128,4 +128,25 @@ public class ExpensiveModel implements IExpensiveModel{
 	}
 
 
+	@Override
+	public int getIdCarForPlate(String plate) {
+		String query ="SELECT id FROM cars WHERE licensePlate = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, plate);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				int id = rs.getInt(1);
+				return id;
+			}else {
+				return -1;
+			}
+		} catch (Exception e) {
+			return -1;
+		}
+	}
 }
+
+
+

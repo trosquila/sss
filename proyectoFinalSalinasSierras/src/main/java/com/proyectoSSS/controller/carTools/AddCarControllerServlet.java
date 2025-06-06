@@ -47,6 +47,7 @@ public class AddCarControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		String brand = request.getParameter("brand");
 		String model = request.getParameter("model");
 		String licensePlate = request.getParameter("licensePlate");
@@ -79,6 +80,11 @@ public class AddCarControllerServlet extends HttpServlet {
 			
 		}else {
 			request.setAttribute("saveCarFalse", "Hubo un error al guardar el vehiculo.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
+			dispatcher.forward(request, response);
+		}
+		} catch (Exception e) {
+			request.setAttribute("saveCarFalse", "Hubo un error, pruebe otra vez a insertar TODOS los datos.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/carTools/CreateCarView.jsp");
 			dispatcher.forward(request, response);
 		}

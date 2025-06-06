@@ -7,11 +7,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
 		<title>Crear gasto</title>
 	</head>
 	<body>
 		<header></header>
-		<section>
+		<section class="conetenedorPrincipal">
+			<h1>Añadir gastos</h1>
 			<div>
 				<form action="${pageContext.request.contextPath}/ExpensiveTableController" method="POST">
 				<input type="hidden" name="choose" value="3">
@@ -43,10 +45,6 @@
 						    <option value="Cambio de líquidos refrigerantes">Cambio de líquidos refrigerantes</option>
 						    <option value="Amortiguadores y suspensión">Amortiguadores y suspensión</option>
 						</select>
-					</div>
-					<div>
-						<label>ID del vehiculo</label>
-						<input type="number" name="idCar">
 					</div>
 					<button>Guardar</button>
 					<input type="reset" value="Borrar">

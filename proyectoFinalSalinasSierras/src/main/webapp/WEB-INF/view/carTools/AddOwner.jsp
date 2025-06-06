@@ -8,8 +8,10 @@
 		<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/static/css/style.css">
 	</head>
-	<body>
-		<section>
+	<body>		
+		<header></header>
+		<section class="conetenedorPrincipal">
+			<h1>Añadir un propietario al vehiculo</h1>
 			<div>
 				<form action="${pageContext.request.contextPath}/ManageCarTableController" method="POST">
 					<%String carPlate = request.getParameter("car");%>
@@ -19,9 +21,11 @@
 						<label>UUID de nuevo propietario</label>
 						<input type="text"  name="newOwner">
 					</div>
-					<button>Guardar</button>
-					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/ManageCar">Volver</a>
+					<div class="colocarBtnForm">
+						<button  class="btn">Guardar</button>
+						<input type="reset" value="Borrar"  class="btn">
+						<a href="${pageContext.request.contextPath}/ManageCar" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+					</div>
 				</form>
 			</div>
 			<%

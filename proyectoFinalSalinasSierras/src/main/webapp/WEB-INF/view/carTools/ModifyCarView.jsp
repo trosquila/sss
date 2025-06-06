@@ -35,8 +35,8 @@
 					</div>
 					<div class="colocarBtnForm">
 						<button class="btn">Guardar</button>
-						<input type="reset" value="Borrar" class="btn1">
-						<a href="${pageContext.request.contextPath}/ManageCar" class="btn txtEnlacebtn colocarBtnCreateCar">Volver</a>
+						<input type="reset" value="Borrar" class="btn">
+						<a href="${pageContext.request.contextPath}/ManageCar" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
 					</div>
 					
 				</form>

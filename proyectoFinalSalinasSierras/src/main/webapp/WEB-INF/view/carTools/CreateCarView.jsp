@@ -7,6 +7,7 @@
 		<title>Añadir un coche</title>
 		<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/static/css/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<header></header>
@@ -41,11 +42,11 @@
 			<%
 			if (request.getAttribute("saveCarOk") != null) {
 			%>
-				<p style="color: green;"><%=request.getAttribute("saveCarOk")%></p>
+				<div class="info"> <p><i class="fa fa-info-circle" aria-hidden="true"></i> <%= request.getAttribute("saveCarOk") %></p></div>
 			<%
 			}else if(request.getAttribute("saveCarFalse") != null){
 			%>
-				<p style="color: red;"><%=request.getAttribute("saveCarFalse")%></p>
+				<div class="alert"> <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= request.getAttribute("saveCarFalse") %></p></div>
 			<%
 			}
 			
