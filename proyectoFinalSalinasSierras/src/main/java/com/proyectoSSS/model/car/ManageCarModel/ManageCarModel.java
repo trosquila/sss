@@ -125,20 +125,30 @@ public class ManageCarModel implements IManageCarModel{
 		return true;
 	}
 	@Override
-	public boolean deleteCar(int plateForDelete) {
+	public boolean deleteCar(int carId) {
 		String query = "DELETE FROM owners WHERE car_id = ?";
 		try {
 			
 			PreparedStatement ps1 = connection.prepareStatement(query);
-			ps1.setInt(1, plateForDelete);
+			ps1.setInt(1, carId);
 			ps1.executeUpdate();
 			
 			try {
 				String query2 = "DELETE FROM cars WHERE id = ?";
 				PreparedStatement ps2 = connection.prepareStatement(query2);
-				ps2.setInt(1, plateForDelete);
+				ps2.setInt(1, carId);
 				ps2.executeUpdate();
-				return true;
+				
+				try {
+					String query3 = "DELETE FROM carexpense WHERE idCar = ?";
+					PreparedStatement ps3 = connection.prepareStatement(query3);
+					ps3.setInt(1, carId);
+					ps3.executeUpdate();
+					return true;
+				} catch (Exception e) {
+					System.out.println(e);
+					return false;
+				}
 			} catch (Exception e) {
 				return false;
 			}
