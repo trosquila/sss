@@ -17,15 +17,13 @@
 			<div>
 				<form action="${pageContext.request.contextPath}/ExpensiveTableController" method="POST">
 				<input type="hidden" name="choose" value="3">
-				
 				<input type="hidden" name="plate" value="<%=plate %>">
-					<div>
+				
+					<div class="formulario">
 						<label>Kilometraje</label>
 						<input type="text"  name="mileage">
 						<label>precio</label>
 						<input type="text" name="price">
-					</div>
-					<div>
 						<label>Concepto</label>
 						<select name="expenseConcept">
 						    <option value="Aceite" >Aceite</option>
@@ -46,9 +44,11 @@
 						    <option value="Amortiguadores y suspensión">Amortiguadores y suspensión</option>
 						</select>
 					</div>
-					<button>Guardar</button>
-					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/ManageCar?goBack=true">Volver</a>
+					<div class="colocarBtnForm">
+						<button class="btn">Guardar</button>
+						<input type="reset" class="btn" value="Borrar">
+						<a href="${pageContext.request.contextPath}/ManageCar?goBack=true" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+					</div>
 				</form>
 			</div>
 			<%

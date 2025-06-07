@@ -40,11 +40,7 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 			<% 
 			}else{
 			%>
-			<div>
-				<a  href="${pageContext.request.contextPath}/ExpensiveTableController?choose=3&plate=<%= plate%>">Añadir Gasto</a>
-				<a>Volver</a>
-			</div>
-			<table>
+			<table  class="tablaManageCar">
 				<tr class="pintarTablaMange">
 						<th>ID</th>
 						<th>KILOMETRAJE</th>
@@ -72,7 +68,7 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 							<td><%= expense.getIdUser() %></td>
 							<td><%= expense.getDate() %></td>
 							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=1&expense=<%= expense.getExpenseId() %>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>"><i class="fa fa-user-plus" aria-hidden="true"></i></a></td>
+							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a></td>
 						</tr>
 					<%}else
 					{%>
@@ -85,12 +81,16 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 							<td><%= expense.getIdUser() %></td>
 							<td><%= expense.getDate() %></td>
 							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=1&expense=<%= expense.getExpenseId() %>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>"><i class="fa fa-user-plus" aria-hidden="true"></i></a></td>
+							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a></td>
 						</tr>
 					<%}
 					count++;
 				}%>
 			</table>
+			<div class="colocarBtnForm">
+				<a  href="${pageContext.request.contextPath}/ExpensiveTableController?choose=3&plate=<%= plate%>" class="btn txtEnlacebtn colocarBtnCreateCar">Añadir gasto</a>
+				<a href="${pageContext.request.contextPath}/ManageCar?plate=<%= plate%>" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+			</div>
 			<% 	
 			}
 			String alertExpensive = (String) request.getAttribute("AlertExpensive");

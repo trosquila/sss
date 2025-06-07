@@ -9,23 +9,24 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
 		<title>Editar gasto</title>
 	</head>
 	<body>
 		<header></header>
-		<section>
+		<section class="conetenedorPrincipal">
+			<h1>Editar gasto</h1>
 			<div>
 				<form action="${pageContext.request.contextPath}/ExpensiveTableController" method="POST">
 				<input type="hidden" name="choose" value="1">
 				<input type="hidden" name="expense" value="<%= expense.getExpenseId()%>">
 				<input type="hidden" name="plate" value="<%=plate %>">
-					<div>
+				<input type="hidden" name="idCar"  value="<%= expense.getIdCar()%>">
+				<div  class="formulario">
 						<label>Kilometraje</label>
 						<input type="text"  name="mileage" value="<%= expense.getMileage()%>">
 						<label>precio</label>
 						<input type="text" name="price" value="<%= expense.getIdCar()%>">
-					</div>
-					<div>
 						<label>Concepto</label>
 						<select name="expenseConcept">
 						    <option value="Aceite" <%= expense.getExpenseConcept().equals("Aceite") ? "selected" : "" %>>Aceite</option>
@@ -45,14 +46,13 @@
 						    <option value="Cambio de líquidos refrigerantes" <%= expense.getExpenseConcept().equals("Cambio de líquidos refrigerantes") ? "selected" : "" %>>Cambio de líquidos refrigerantes</option>
 						    <option value="Amortiguadores y suspensión" <%= expense.getExpenseConcept().equals("Amortiguadores y suspensión") ? "selected" : "" %>>Amortiguadores y suspensión</option>
 						</select>
-					</div>
-					<div>
-						<label>ID del vehiculo</label>
-						<input type="number" name="idCar"  value="<%= expense.getIdCar()%>">
-					</div>
-					<button>Guardar</button>
-					<input type="reset" value="Borrar">
-					<a href="${pageContext.request.contextPath}/ManageCar?goBack=true">Volver</a>
+				</div>
+				<div class="colocarBtnForm">
+					<button class="btn">Guardar</button>
+					<input type="reset" class="btn" value="Borrar">
+					<a href="${pageContext.request.contextPath}/ManageCar?goBack=true"class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+				</div>
+					
 				</form>
 			</div>
 			<%

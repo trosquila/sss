@@ -62,6 +62,7 @@ public class ExpensiveModel implements IExpensiveModel{
 			
 		} catch (Exception e) {
 			return false;
+			
 		}
 		return true;
 	}
