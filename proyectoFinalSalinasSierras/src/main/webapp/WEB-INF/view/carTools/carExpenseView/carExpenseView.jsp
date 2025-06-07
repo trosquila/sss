@@ -67,8 +67,8 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 							<td><%= expense.getIdCar() %></td>
 							<td><%= expense.getIdUser() %></td>
 							<td><%= expense.getDate() %></td>
-							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=1&expense=<%= expense.getExpenseId() %>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a></td>
+							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=1&expense=<%= expense.getExpenseId() %>&plate=<%= plate%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>&plate=<%= plate%>"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a></td>
 						</tr>
 					<%}else
 					{%>
@@ -80,8 +80,8 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 							<td><%= expense.getIdCar() %></td>
 							<td><%= expense.getIdUser() %></td>
 							<td><%= expense.getDate() %></td>
-							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=1&expense=<%= expense.getExpenseId() %>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a></td>
+							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=1&expense=<%= expense.getExpenseId() %>&plate=<%= plate%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+							<td class="btnTabla"><a href="${pageContext.request.contextPath}/ExpensiveTableController?choose=2&expense=<%= expense.getExpenseId() %>&plate=<%= plate%>"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a></td>
 						</tr>
 					<%}
 					count++;

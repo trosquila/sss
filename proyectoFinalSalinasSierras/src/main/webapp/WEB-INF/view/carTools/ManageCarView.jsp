@@ -5,7 +5,6 @@
 <%	 
 	//lo pongo en string porq en int no me deja verificarlo bien
 Integer uuid = (Integer) session.getAttribute("UUID");
-System.out.println("UUID en CarView "+uuid);
 if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
 	response.sendRedirect("/WEB-INF/index.jsp");
 }
@@ -28,7 +27,7 @@ List<Car> carList = (List<Car>) request.getAttribute("carList");
 		<h1>Listado de vehiculos en propiedad</h1>
 		<%if(carList.isEmpty()){
 		%>
-			<p style="text-align: center">No se encontro ningún vehiculo a su nombre, pruebe a agregar uno desde la sección de añadir vehiculo en el menú de inicio.</p>
+			<p class="centrarTxt">No se encontro ningún vehiculo a su nombre, pruebe a agregar uno desde la sección de añadir vehiculo en el menú de inicio.</p>
 		<%
 		}else{
 		%>

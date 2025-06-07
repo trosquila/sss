@@ -135,15 +135,43 @@ public class ManageCarModel implements IManageCarModel{
 			
 			try {
 				String query2 = "DELETE FROM cars WHERE id = ?";
-				ps1.setInt(1, plateForDelete);
-				ps1.executeUpdate();
+				PreparedStatement ps2 = connection.prepareStatement(query2);
+				ps2.setInt(1, plateForDelete);
+				ps2.executeUpdate();
+				return true;
 			} catch (Exception e) {
-				System.out.println("fallo al borrar de la tabla coche "+e);
+				return false;
 			}
 		} catch (Exception e) {
-			System.out.println("fallo al borrar de la tabla owner "+e);
+			return false;
 		}
-		return false;
+		
+	}
+	@Override
+	public Car getCarForEdit(String carPlate) {
+		String query ="SELECT id, brand, model, licensePlate, engine, year, insuranceCompany FROM cars  WHERE licensePlate = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+
+			ps.setString(1, carPlate);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt(1);
+				String brand = rs.getString(2);
+				String model = rs.getString(3);
+				String licensePlate = rs.getString(4);
+				String engine = rs.getString(5);
+				int year = rs.getInt(6);
+				String insuranceCompany = rs.getString(7);
+				Car car = new Car(id, brand, model, licensePlate ,engine,year, insuranceCompany);
+				return car;
+			}
+			
+		} catch (Exception e) {
+			return null;
+		}
+		return null;
 	}
 
 

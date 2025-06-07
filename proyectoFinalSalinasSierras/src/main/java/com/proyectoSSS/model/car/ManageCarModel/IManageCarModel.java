@@ -18,4 +18,6 @@ public interface IManageCarModel {
 
 	boolean deleteCar(int searchCarIdDelete);
 
+	Car getCarForEdit(String carPlate);
+
 }

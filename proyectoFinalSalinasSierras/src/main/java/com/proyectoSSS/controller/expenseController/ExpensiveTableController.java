@@ -46,6 +46,7 @@ public class ExpensiveTableController extends HttpServlet {
 		case 1:
 				//se le manda a edit expenseexpense
 			int expenseId = Integer.parseInt(request.getParameter("expense"));
+			
 			Expense expense = expensiveModel.getExpensive(expenseId);
 			request.setAttribute("expense", expense);
 			request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/EditExpenseView.jsp").forward(request, response);
@@ -53,12 +54,14 @@ public class ExpensiveTableController extends HttpServlet {
 		case 2:
 				//se le manda a añadir expense
 			 expenseId = Integer.parseInt(request.getParameter("expense"));
+			 String plate = request.getParameter("plate");
 			 request.setAttribute("expense", expenseId);
 				request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/DeleteExpense.jsp").forward(request, response);
 			
 			break;
 		case 3:
-			String plate = request.getParameter("plate");
+			//se le manda a borrar
+			plate = request.getParameter("plate");
 			request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/AddExpenseView.jsp?plate="+plate).forward(request, response);
 
 		break;
@@ -79,31 +82,34 @@ public class ExpensiveTableController extends HttpServlet {
 		}
 		
 		int choose = Integer.parseInt(request.getParameter("choose"));
+		int idUser = (int) session.getAttribute("UUID");
 		
 		int mileage;
 		int price;
 	    String expenseConcept;
 	    int idCar;
-        int idUser = (int) session.getAttribute("UUID");
 
         switch (choose) {
 		case 1:
 			try {
+				String plate = request.getParameter("plate");
 				int expense =  Integer.parseInt(request.getParameter("expense"));
 				mileage = Integer.parseInt(request.getParameter("mileage"));
 				price = Integer.parseInt(request.getParameter("price"));
 				expenseConcept = request.getParameter("expenseConcept");
 				idCar = Integer.parseInt(request.getParameter("idCar"));
+				
 		        Expense expensiveAdd = new Expense(0, mileage, price, expenseConcept, idCar, idUser, "");
+		        
 		        boolean expenseUpdate = expensiveModel.updateExpense(expensiveAdd, expense);
 		        if (expenseUpdate == true) {
 		        	session.setAttribute("AlertExpensive", "Información,El gasto fue actualizado correctamente");  
 		    	
-					response.sendRedirect("ExpensiveController");
+					response.sendRedirect("ExpensiveController?car="+plate);
 		        }else {
 		        	session.setAttribute("AlertExpensive", "Alert,Hubo un error al actualizar el gasto");  
 			    	
-					response.sendRedirect("ExpensiveController");
+					response.sendRedirect("ExpensiveController?car="+plate);
 		        }
 			} catch (Exception e) {
 	        	session.setAttribute("AlertExpensive", "Alert,Hubo un error al actualizar el gasto");  

@@ -39,13 +39,12 @@ public class CarModel implements ICarModel {
 					ps1.setString(6, car.getInsuranceCompany());
 
 					ps1.executeUpdate();
+					return true;
 
 				} catch (Exception e) {
 					return false;
 				}
-				return true;
-				
-			} else {
+			} else {	
 				return false;
 			}
 		}catch (Exception e) {

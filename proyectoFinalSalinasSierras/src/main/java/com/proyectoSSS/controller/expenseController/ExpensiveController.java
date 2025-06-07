@@ -59,6 +59,7 @@ public class ExpensiveController extends HttpServlet {
 		expensiveList = expensiveModel.getCarExpense(plate, uuid);
 		
 		request.setAttribute("expensiveList", expensiveList);
+	
 		request.getRequestDispatcher("/WEB-INF/view/carTools/carExpenseView/carExpenseView.jsp?plate="+plate).forward(request, response);
 	}
 

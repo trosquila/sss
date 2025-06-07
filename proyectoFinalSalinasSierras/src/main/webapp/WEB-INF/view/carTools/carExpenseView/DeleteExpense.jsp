@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%   String plate = request.getParameter("plate"); %>
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
 		<meta charset="UTF-8">
 		<title>Eliminar vehiculo</title>
 		<link rel="stylesheet" type="text/css"
@@ -22,7 +23,7 @@
 					</div>
 					<div class ="colocarBtnForm">
 						<button class="btn">Eliminar</button>
-						<a href="${pageContext.request.contextPath}/ExpensiveTableController" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
+						<a href="${pageContext.request.contextPath}/ExpensiveController?car=<%=plate %>" class="btn1 txtEnlacebtn colocarBtnCreateCar">Volver</a>
 					</div>
 				</form>
 			</div>

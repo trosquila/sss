@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.List, com.proyectoSSS.model.car.Car" %>
+<%
+Car changeCar = (Car) request.getAttribute("changeCar");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,24 +17,24 @@
 			<h1>Editar vehiculo</h1>
 			<div>
 				<form action="${pageContext.request.contextPath}/ManageCarTableController" method="POST">
-					<%String carPlate = request.getParameter("car");%>
 					<input type="hidden" name="choose" value="1">
 					<div class="formulario">
 
+							
 							<label>Marca:</label>
-							<input type="text"  name="brand">
+							<input type="text"  name="brand" value="<%= changeCar.getBrand() %>">
 							<label>Modelo:</label>
-							<input type="text" name="model">
+							<input type="text" name="model"  value="<%= changeCar.getBrand() %>">
 
 							<label>Matricula:</label>
-							<input type="text" name="licensePlate" value="<%= carPlate %>" readonly>
+							<input type="text" name="licensePlate"  value="<%= changeCar.getLicensePlate() %>" readonly>
 							<label>Motor:</label>
-							<input type="text" name="engine">
+							<input type="text" name="engine" value="<%= changeCar.getEngine() %>">
 
 							<label>Año:</label>
-							<input type="number" name="year">
+							<input type="number" name="year" value="<%= changeCar.getYear() %>">
 							<label>Aseguradora:</label>
-							<input type="text" name="insuranceCompany">
+							<input type="text" name="insuranceCompany" value="<%= changeCar.getInsuranceCompany() %>">
 
 					</div>
 					<div class="colocarBtnForm">

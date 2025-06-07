@@ -44,7 +44,9 @@ public class ManageCarTableController extends HttpServlet {
 		switch (choose) {
 		case 1:
 				//se le manda a edit car
-			request.getRequestDispatcher("/WEB-INF/view/carTools/ModifyCarView.jsp?car="+carPlate).forward(request, response);
+			Car changeCar = manageCar.getCarForEdit(carPlate);
+			request.setAttribute("changeCar", changeCar);
+			request.getRequestDispatcher("/WEB-INF/view/carTools/ModifyCarView.jsp").forward(request, response);
 
 			break;
 		case 2:
