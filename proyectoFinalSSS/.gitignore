@@ -35,10 +35,6 @@ build/
 
 ### --- Configuraciones sensibles --- ###
 .env
-*.properties
-*.keystore
-*.jks
-
 
 ### --- Logs y temporales --- ###
 *.log
@@ -57,6 +53,10 @@ build/
 .DS_Store
 
 # Windows
-Thumbs.db
-ehthumbs.db
 Desktop.ini
+
+# Permitir archivos de bases de datos
+!*.sql
+!*.db
+!*.sqlite
+!*.sql.gz
