@@ -80,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
 		}
 
 	}

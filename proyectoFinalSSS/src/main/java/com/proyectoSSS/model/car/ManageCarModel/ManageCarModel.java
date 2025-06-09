@@ -97,31 +97,28 @@ public class ManageCarModel implements IManageCarModel{
 			ps.setString(1, owner);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				System.out.println("encontro al user uuid "+owner);
 				return true;
 			}else {
-				System.out.println("NO encontro al user uuid "+owner);
 				return false;
 			}
 		} catch (Exception e) {
-			System.out.println("NO necontro al user uuid "+owner+" error "+e);
 			return false;
 		}
 	}
 	@Override
-	public boolean insetNewOwnerInCar(int searchCarId, String owner) {
+	public boolean insetNewOwnerInCar(int searchCarId, String owner, int uuidFirstOwner) {
 		
-	String query = "INSERT INTO owners (car_id, user_uuid) VALUES (?, ?)";
+	String query = "INSERT INTO owners (car_id, user_uuid, firstUser) VALUES (?, ?, ?)";
 		
 		try {
 			PreparedStatement ps1 = connection.prepareStatement(query);
 
 			ps1.setInt(1, searchCarId);
 			ps1.setString(2, owner);
+			ps1.setInt(3, uuidFirstOwner);
 
 			ps1.executeUpdate();
 
-			
 		} catch (Exception e) {
 			return false;
 		}
@@ -149,7 +146,6 @@ public class ManageCarModel implements IManageCarModel{
 					ps3.executeUpdate();
 					return true;
 				} catch (Exception e) {
-					System.out.println(e);
 					return false;
 				}
 			} catch (Exception e) {
@@ -185,6 +181,23 @@ public class ManageCarModel implements IManageCarModel{
 			return null;
 		}
 		return null;
+	}
+	@Override
+	public boolean checkFirstUser(int uuid, int searchCarId) {
+		String query = "SELECT car_id, firstUser FROM owners WHERE car_id = ? AND firstUser = ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, searchCarId);
+			ps.setInt(2, uuid);
+
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
+			
+		} catch (Exception e) {
+
+			return false;
+		}
+
 	}
 
 

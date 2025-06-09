@@ -120,38 +120,39 @@ INSERT INTO `cars` (`id`, `brand`, `model`, `licensePlate`, `engine`, `year`, `i
 CREATE TABLE `owners` (
   `id_owners` int(11) NOT NULL,
   `car_id` int(11) NOT NULL,
-  `user_uuid` int(11) NOT NULL
+  `user_uuid` int(11) NOT NULL,
+  `firstUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `owners`
 --
 
-INSERT INTO `owners` (`id_owners`, `car_id`, `user_uuid`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 1),
-(5, 5, 2),
-(6, 6, 3),
-(7, 7, 1),
-(8, 8, 2),
-(9, 9, 3),
-(10, 10, 1),
-(11, 11, 2),
-(12, 12, 3),
-(13, 13, 1),
-(14, 14, 2),
-(15, 15, 3),
-(16, 16, 1),
-(17, 17, 2),
-(18, 18, 3),
-(19, 19, 1),
-(20, 20, 2),
-(21, 21, 3),
-(22, 22, 1),
-(23, 23, 2),
-(24, 24, 3);
+INSERT INTO `owners` (`id_owners`, `car_id`, `user_uuid`,`firstUser`) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2),
+(3, 3, 3, 3),
+(4, 4, 1, 1),
+(5, 5, 2, 2),
+(6, 6, 3, 3),
+(7, 7, 1, 1),
+(8, 8, 2, 2),
+(9, 9, 3, 3),
+(10, 10, 1, 1),
+(11, 11, 2, 2),
+(12, 12, 3, 3),
+(13, 13, 1, 1),
+(14, 14, 2, 2),
+(15, 15, 3, 3),
+(16, 16, 1, 1),
+(17, 17, 2, 2),
+(18, 18, 3, 3),
+(19, 19, 1, 1),
+(20, 20, 2, 2),
+(21, 21, 3, 3),
+(22, 22, 1, 1),
+(23, 23, 2, 2),
+(24, 24, 3, 3);
 
 -- --------------------------------------------------------
 

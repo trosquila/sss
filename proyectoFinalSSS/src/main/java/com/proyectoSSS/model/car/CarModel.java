@@ -65,14 +65,15 @@ public class CarModel implements ICarModel {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				int idUser = rs.getInt(1);
-				String query = "INSERT INTO owners (car_id, user_uuid) VALUES (?, ?)";
+				int idCar = rs.getInt(1);
+				String query = "INSERT INTO owners (car_id, user_uuid, firstUser) VALUES (?, ?,?)";
 
 				try {
 					PreparedStatement ps1 = connection.prepareStatement(query);
 
-					ps1.setInt(1, idUser);
+					ps1.setInt(1, idCar);
 					ps1.setInt(2, uuid);
+					ps1.setInt(3, uuid);
 
 					ps1.executeUpdate();
 
@@ -82,11 +83,9 @@ public class CarModel implements ICarModel {
 				return true;
 				
 			} else {
-				System.out.println("falla subiendo el owner");
 				return false;
 			}
 		}catch (Exception e) {
-			System.out.println("falla buscando la matricula");
 			return false;
 				
 		}

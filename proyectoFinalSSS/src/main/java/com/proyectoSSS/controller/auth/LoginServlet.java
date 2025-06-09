@@ -72,12 +72,8 @@ public class LoginServlet extends HttpServlet {
 					//si no hay ningun problema inicia sesión
 					if(loadUser != null) {
 						HttpSession session = request.getSession(true); 
-						if (session == null) {
-						    System.out.println("No hay una sesión activa en login.");
-						}
 					    session.setAttribute("UUID", loadUser.getUuid()); 
 					    session.setAttribute("UserName", loadUser.getUserName());
-					    session.setMaxInactiveInterval(30);
 					    
 						request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp").forward(request, response);
 						

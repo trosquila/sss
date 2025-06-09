@@ -56,8 +56,6 @@ public class ExpensiveController extends HttpServlet {
 		
 		//para que sea un numero ya que el id es int
 		int uuid = (int) session.getAttribute("UUID");
-
-		System.out.println("palte en espensiveController "+plate);
 		List <Expense> expensiveList = new ArrayList<Expense>();
 		
 		expensiveList = expensiveModel.getCarExpense(plate, uuid);

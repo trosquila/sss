@@ -123,24 +123,36 @@ public class ManageCarTableController extends HttpServlet {
 				String licensePlateAddOwner = request.getParameter("licensePlate");			
 				int searchCarId = manageCar.searchCarId(licensePlateAddOwner);
 				
-				//comprobamos que el user existe
-				String owner = request.getParameter("newOwner");
-				boolean searchOwner = manageCar.searchOwner(owner);
-				if (searchOwner == true) {
-					boolean addOwnerToCar = manageCar.insetNewOwnerInCar(searchCarId, owner);
-					if(addOwnerToCar == true) {
-						session.setAttribute("AlertToTable", "Informacion,El usuario con UUID "+owner+" fue agregado al vehiculo con matricula "+licensePlateAddOwner); 
-						response.sendRedirect("ManageCar");
-					}else {
-						session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario"); 
-						response.sendRedirect("ManageCar");
-					}
+				//comprobamos si es el dueño
+				int uuid = (int) session.getAttribute("UUID");
+				boolean checkFirstUser = manageCar.checkFirstUser(uuid, searchCarId);
+				if (checkFirstUser == true) {
+					
+					//comprobamos que el user existe
+					String owner = request.getParameter("newOwner");
+					boolean searchOwner = manageCar.searchOwner(owner);
+					if (searchOwner == true) {
+						
+						//lo añadimos
+						boolean addOwnerToCar = manageCar.insetNewOwnerInCar(searchCarId, owner, uuid);
+						if(addOwnerToCar == true) {
+							session.setAttribute("AlertToTable", "Informacion,El usuario con UUID "+owner+" fue agregado al vehiculo con matricula "+licensePlateAddOwner); 
+							response.sendRedirect("ManageCar");
+							}else {
+								session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario1"); 
+								response.sendRedirect("ManageCar");
+							}
+						}else {
+							session.setAttribute("AlertToTable", "Alert,Ese usuario ya es propietario de este vehículo"); 
+							response.sendRedirect("ManageCar");
+						}
 				}else {
-					session.setAttribute("AlertToTable", "Alert,Ese usuario ya es propietario de este vehículo"); 
+					session.setAttribute("AlertToTable", "Alert,No te pertenece este vehículo"); 
 					response.sendRedirect("ManageCar");
 				}
+
 			} catch (Exception e) {
-				session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario"); 
+				session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario2s"); 
 				response.sendRedirect("ManageCar");
 			}
 			

@@ -14,10 +14,12 @@ public interface IManageCarModel {
 
 	boolean searchOwner(String owner);
 
-	boolean insetNewOwnerInCar(int searchCarId, String owner);
+	boolean insetNewOwnerInCar(int searchCarId, String owner, int uuid);
 
 	boolean deleteCar(int searchCarIdDelete);
 
 	Car getCarForEdit(String carPlate);
+
+	boolean checkFirstUser(int uuid, int searchCarId);
 
 }
