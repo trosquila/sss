@@ -47,17 +47,19 @@ public class ManageCarControllerServlet extends HttpServlet {
 		
 		//nos permite ir al home si le damos al btn de volver de addCar
 		String goBack = request.getParameter("goBack");
-		if ("true".equals(goBack)) {  // Validación segura
+		if ("true".equals(goBack)) {
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
 		    dispatcher.forward(request, response);
 		    return;
 		}
 		
 		//por si falla la sesión, en el  || lo convierte en string y mira si está vacia
+		
 		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
-		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
 		    return;
 		}
+
 
 		
 		//variables para recoger mensajes

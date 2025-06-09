@@ -41,6 +41,12 @@ public class ManageCarTableController extends HttpServlet {
 		int choose = Integer.parseInt(request.getParameter("choose"));
 		String carPlate =request.getParameter("car");
 		
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
+		    return;
+		}
+
 		switch (choose) {
 		case 1:
 				//se le manda a edit car
@@ -76,6 +82,11 @@ public class ManageCarTableController extends HttpServlet {
 		int choose = Integer.parseInt(request.getParameter("choose"));
 		//iniciamos una variable de sesión ya creada
 		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
+		    return;
+		}
+
 		switch (choose) {
 		case 1:
 			//editar vehiculo

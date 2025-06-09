@@ -12,6 +12,7 @@ if (uuid == null || uuid == 0) {
 	response.sendRedirect(request.getContextPath() + "/index.jsp");
 	return;
 }
+
 %>
 <!DOCTYPE html>
 <html>

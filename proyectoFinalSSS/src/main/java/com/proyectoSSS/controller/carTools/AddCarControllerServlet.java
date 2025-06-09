@@ -48,6 +48,12 @@ public class AddCarControllerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
+		    return;
+		}
+
 		String brand = request.getParameter("brand");
 		String model = request.getParameter("model");
 		String licensePlate = request.getParameter("licensePlate");
@@ -58,7 +64,6 @@ public class AddCarControllerServlet extends HttpServlet {
 		Car car = new Car(0, brand, model, licensePlate, engine, year, insuranceCompany);
 		boolean resulInsertCar = carModel.saveNewCar(car);
 		if (resulInsertCar == true) {
-			HttpSession session = request.getSession(false);
 			//para que sea un numero ya que el id esint
 			int uuid = (int) session.getAttribute("UUID");
 			boolean assignOwner = carModel.assignOwner(car.getLicensePlate(), uuid);

@@ -39,7 +39,13 @@ public class ExpensiveTableController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int choose = Integer.parseInt(request.getParameter("choose"));
-		
+		HttpSession session = request.getSession(false);
+		//por si falla la sesión, en el  || lo convierte en string y mira si está vacia
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
+		    return;
+		}
+
 		switch (choose) {
 		case 1:
 				//se le manda a edit expenseexpense
@@ -73,11 +79,11 @@ public class ExpensiveTableController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		//miramos si la sesión esta activa para que la pagina no pete
-		if (session.getAttribute("UUID") == null || session.getAttribute("UUID") == "") {
-		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
 		    return;
 		}
+
 		
 		int choose = Integer.parseInt(request.getParameter("choose"));
 		int idUser = (int) session.getAttribute("UUID");

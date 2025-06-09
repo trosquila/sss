@@ -45,9 +45,10 @@ public class ExpensiveController extends HttpServlet {
 		
 		//por si falla la sesión, en el  || lo convierte en string y mira si está vacia
 		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
-		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
+			request.getRequestDispatcher("/WEB-INF/view/authView/login.jsp").forward(request, response);
 		    return;
 		}
+
 		
 		//para madar el error
 		Object alertExpense = session.getAttribute("AlertExpensive");
