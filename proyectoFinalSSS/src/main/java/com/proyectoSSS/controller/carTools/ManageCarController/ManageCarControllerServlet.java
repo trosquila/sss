@@ -50,13 +50,15 @@ public class ManageCarControllerServlet extends HttpServlet {
 		if ("true".equals(goBack)) {  // Validación segura
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/Home.jsp");
 		    dispatcher.forward(request, response);
+		    return;
 		}
-
-		//miramos si la sesión esta activa para que la pagina no pete
-		if (session.getAttribute("UUID") == null || session.getAttribute("UUID") == "") {
+		
+		//por si falla la sesión, en el  || lo convierte en string y mira si está vacia
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
 		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
 		    return;
 		}
+
 		
 		//variables para recoger mensajes
 		Object alertUpdateCarOk = session.getAttribute("AlertToTable");

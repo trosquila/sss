@@ -89,7 +89,7 @@ public class ManageCarModel implements IManageCarModel{
 	}
 	@Override
 	public boolean searchOwner(String owner) {
-		System.out.println("owner "+owner);
+		
 		String query ="SELECT UUID FROM users WHERE UUID = ?";
 		
 		try {
@@ -97,11 +97,14 @@ public class ManageCarModel implements IManageCarModel{
 			ps.setString(1, owner);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
+				System.out.println("encontro al user uuid "+owner);
 				return true;
 			}else {
+				System.out.println("NO encontro al user uuid "+owner);
 				return false;
 			}
 		} catch (Exception e) {
+			System.out.println("NO necontro al user uuid "+owner+" error "+e);
 			return false;
 		}
 	}

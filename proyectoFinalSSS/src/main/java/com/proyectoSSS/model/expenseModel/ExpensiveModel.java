@@ -80,13 +80,11 @@ public class ExpensiveModel implements IExpensiveModel{
 				int idCar = rs.getInt(4);
 				int idUser = rs.getInt(5);
 				Expense expense = new Expense(expenseId, mileage, price, expenseConcept, idCar, idUser, "");
-				System.out.println("Model: id "+expenseId+" Gasto: "+expense.toString());
 				return expense;
 				
 			}
 			
 		}catch (Exception e) {
-			System.out.println(e);
 			return null;
 		}
 		return null;
@@ -122,7 +120,6 @@ public class ExpensiveModel implements IExpensiveModel{
 			ps1.executeUpdate();
 			
 		} catch (Exception e) {
-			System.out.println(e);
 			return false;
 		}
 		return true;

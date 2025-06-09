@@ -125,7 +125,7 @@ public class ManageCarTableController extends HttpServlet {
 						response.sendRedirect("ManageCar");
 					}
 				}else {
-					session.setAttribute("AlertToTable", "Alert,Hubo un error al asignar al usuario"); 
+					session.setAttribute("AlertToTable", "Alert,Ese usuario ya es propietario de este vehículo"); 
 					response.sendRedirect("ManageCar");
 				}
 			} catch (Exception e) {

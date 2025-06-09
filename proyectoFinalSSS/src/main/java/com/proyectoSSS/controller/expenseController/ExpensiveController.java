@@ -43,19 +43,22 @@ public class ExpensiveController extends HttpServlet {
 		String plate = request.getParameter("car");
 		HttpSession session = request.getSession(false);
 		
-		//miramos si la sesión esta activa para que la pagina no pete, se pone toString para que isEmpy funcione
-		if (session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
-			response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
-			return;
+		//por si falla la sesión, en el  || lo convierte en string y mira si está vacia
+		if (session == null || session.getAttribute("UUID") == null || session.getAttribute("UUID").toString().isEmpty()) {
+		    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/authView/login.jsp");
+		    return;
 		}
 		
 		//para madar el error
 		Object alertExpense = session.getAttribute("AlertExpensive");
 		request.setAttribute("AlertExpensive", alertExpense);
 		
-		//para que sea un numero ya que el id esint
+		//para que sea un numero ya que el id es int
 		int uuid = (int) session.getAttribute("UUID");
+
+		System.out.println("palte en espensiveController "+plate);
 		List <Expense> expensiveList = new ArrayList<Expense>();
+		
 		expensiveList = expensiveModel.getCarExpense(plate, uuid);
 		
 		request.setAttribute("expensiveList", expensiveList);

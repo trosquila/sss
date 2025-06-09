@@ -91,6 +91,7 @@ public class ExpensiveTableController extends HttpServlet {
 		case 1:
 			try {
 				String plate = request.getParameter("plate");
+		
 				int expense =  Integer.parseInt(request.getParameter("expense"));
 				mileage = Integer.parseInt(request.getParameter("mileage"));
 				price = Integer.parseInt(request.getParameter("price"));
@@ -119,14 +120,15 @@ public class ExpensiveTableController extends HttpServlet {
 			try {
 				int expense =  Integer.parseInt(request.getParameter("expenseId"));
 				boolean deleteExpense = expensiveModel.deleteExpense(expense);
+				String plate = request.getParameter("plate");
 				 if (deleteExpense == true) {
 			        	session.setAttribute("AlertExpensive", "Información,El gasto fue eliminado correctamente");  
 			    	
-						response.sendRedirect("ExpensiveController");
+						response.sendRedirect("ExpensiveController?car="+plate);
 			        }else {
 			        	session.setAttribute("AlertExpensive", "Alert,Hubo un error al eliminar el gasto");  
 				    	
-						response.sendRedirect("ExpensiveController");
+						response.sendRedirect("ExpensiveController?car="+plate);
 			        }
 			} catch (Exception e) {
 				session.setAttribute("AlertExpensive", "Alert,Hubo un error al eliminar el gasto");  
@@ -147,11 +149,11 @@ public class ExpensiveTableController extends HttpServlet {
 		        if (insertExpensive == true) {
 		        	session.setAttribute("AlertExpensive", "Información,El gasto fue añadido correctamente");  
 		    	
-					response.sendRedirect("ExpensiveController");
+					response.sendRedirect("ExpensiveController?car="+carPlate);
 		        }else {
 		        	session.setAttribute("AlertExpensive", "Alert,Hubo un error al añadir el gasto");  
 			    	
-					response.sendRedirect("ExpensiveController");
+					response.sendRedirect("ExpensiveController?car="+carPlate);
 		        }
 			} catch (Exception e) {
 				session.setAttribute("AlertExpensive", "Alert,Hubo un error al añadir el gasto");  

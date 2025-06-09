@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%	 
-//lo pongo en string porq en int no me deja verificarlo bien
+<%	
+
+if (session == null) {
+	response.sendRedirect(request.getContextPath() + "/index.jsp");
+	return;
+}
+
 Integer uuid = (Integer) session.getAttribute("UUID");
-if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
-	response.sendRedirect("/WEB-INF/index.jsp");
+if (uuid == null || uuid == 0) {
+	response.sendRedirect(request.getContextPath() + "/index.jsp");
+	return;
 }
 %>
 <!DOCTYPE html>

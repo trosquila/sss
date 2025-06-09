@@ -2,12 +2,19 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.List, com.proyectoSSS.model.expenseModel.Expense" %>
 <%
-String plate = request.getParameter("plate");
-Integer uuid = (Integer) session.getAttribute("UUID");
-if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
-	response.sendRedirect("/WEB-INF/index.jsp");
+
+if (session == null) {
+	response.sendRedirect(request.getContextPath() + "/index.jsp");
+	return;
 }
 
+Integer uuid = (Integer) session.getAttribute("UUID");
+if (uuid == null || uuid == 0) {
+	response.sendRedirect(request.getContextPath() + "/index.jsp");
+	return;
+}
+
+String plate = request.getParameter("plate");
 List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveList");
 
 %>
@@ -94,7 +101,6 @@ List<Expense> expensiveList = (List<Expense>) request.getAttribute("expensiveLis
 			<% 	
 			}
 			String alertExpensive = (String) request.getAttribute("AlertExpensive");
-			System.out.println("mensaje: "+alertExpensive);
 			if (alertExpensive != null) {
 				String[] part = alertExpensive.split(",");
 				if(part[0].equals("Informacion")){

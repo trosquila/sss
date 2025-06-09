@@ -3,7 +3,7 @@
 <%    
 //lo pongo en string porq en int no me deja verificarlo bien
 Integer uuid = (Integer) session.getAttribute("UUID");
-if (uuid == null || uuid == 0) { // Ajusta según el valor esperado para una sesión inválida
+if (uuid == null || uuid == 0) {
 	response.sendRedirect("/WEB-INF/index.jsp");
 }
 String plate = request.getParameter("plate"); %>
@@ -24,6 +24,7 @@ String plate = request.getParameter("plate"); %>
 				<form action="${pageContext.request.contextPath}/ExpensiveTableController" method="POST">
 					<%int expenseId = (int) request.getAttribute("expense");%>
 					<input type="hidden" name="choose" value="2">
+					<input type="hidden" name="plate" value="<%=plate%>">
 					<input type="hidden" name=expenseId value="<%= expenseId %>">
 					<div>
 						<p class="centrarTxt">Seguro que desea eliminar el gasto? ID: <%= expenseId %> </p>

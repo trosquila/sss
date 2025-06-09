@@ -42,10 +42,6 @@ public class Configurations {
 				String[] args = line.split("=");
 				configMap.put(args[0].trim(), args[1].trim());
 			}
-			System.out.println("Ruta del .env: " + FileUtils.getFolderPath().resolve(".env").toAbsolutePath());
-			System.out.println("Directorio de ejecución: " + System.getProperty("user.dir"));
-
-
 		}
 		
 		DatabaseConfigurations dbConfigs = new DatabaseConfigurations();

@@ -42,7 +42,7 @@ DB_HOST=localhost
 DB_PORT=3306 o el puerto que uses
 DB_USERNAME=tuNombreDeUsuario
 DB_PASSWORD=tuContraseña
-DB_DATABASE=sss
+DB_DATABASE=proyectoSSSBaseDatos
 ```
 ### 🔹 Problema al cargar el archivo `.env`
 Un posible fallo que se puede encontrar (casi seguro que pasa porque no sabia donde meter el tomcat y se complico la cosa) es que no se encuentre el archivo .env, en mi caso me lo cogia en una carpeta de eclipse, para solucionarlo tenemos que ir a Run > Run Configurations, dentro a la izquierda le daremos al tomcat en mi caso se llama Tomcat v10.1 Server at localhost, entramos en el apartado de Arguments, si nos iremos al último apartado que se llama Working diretory y ponemos la ruta del directorio en mi caso fue C:/Users/salin/Desktop/sss/proyectoFinalSSS, con esto en un principio ya debería funcionar.
